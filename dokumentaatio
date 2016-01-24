@@ -1,0 +1,19 @@
+Dokumentaation tekstiosuus
+
+Vaatekaappi-sovellus
+Juha-Pekka Moilanen / tsoha 2016 / HY
+
+Sovelluksen avulla käyttäjät voivat pitää kirjaa vaatteistaan ja niistä koostuvista asuyhdistelmistä.
+
+Järjestelmän tarkoituksena on helpottaa vaatteiden valitsemista valmiiksi tallennettujen asukokonaisuuksien avulla. Vaatteista tallennetaan niiden tyyppi (housu, paita, jne), väri, materiaali ym. ominaisuuksia sekä mahdollisesti kuva. Käyttäjä voi koostaa järjestelmään tallennetuista vaatteista mieleisiään asuja, jotka tallennetaan järjestelmään käyttäjän antaman hyvyysarvon kera.
+
+Sovellus toteutetaan tktl:n users palvelimen alla.
+
+#temp:
+Tiettyä ohjelmointi kieltä ei vaadita. Olen ajatellut toteuttaa ohjelman PHP:llä, sillä siitä minulla ei ole aikaisempaa kokemusta ja haluaisin opetella sitä.
+
+#temp:
+En tiedä täytyykö käyttäjän selaimen tukea jotain tiettyä ohjelmointikieltä.
+
+#temp:
+Toteutan tietokannan luultavasti SQL-tietokantana, siitä minulla on hieman kokemusta, mutta kaipaisin vielä käytännön harjoittelua sen kanssa.
