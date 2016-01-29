@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Vaatekaapin vaatteet</h1>
+
+  <p>
+    <a href="#" class="btn btn-success">Lisää vaate</a>
+  </p>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>"Nimi"</th>
+        <th>Merkki</th>
+        <th>Tyyppi</th>
+        <th>Väri</th>
+        <th>Väri2</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- Listataan pelit tähän -->
+      <tr>
+        <td><a href="#">Kauluspaita</a></td>
+        <td>H&M</td>
+        <td>Kauluspaita</td>
+        <td>Vaaleansininen</td>
+        <td>Valkoinen</td>
+        <th><a class="btn btn-default btn-sm" href="#">Muokkaa</a></th>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}

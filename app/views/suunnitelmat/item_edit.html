@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Edit item: kauluspaita</h1>
+
+  <form>
+    <div class="checkbox">
+      <!--
+      <label>
+        <input type="checkbox">
+        Pelattu
+      </label>
+      -->
+    </div>
+    
+    <div class="form-group">
+      <label>Nimi</label>
+      <input type="text" class="form-control" value="Kauluspaita">
+    </div>
+
+    <div class="form-group">
+      <label>Merkki</label>
+      <input type="text" class="form-control" value="H&M">
+    </div>
+
+    <div class="form-group">
+      <label>Tyyppi</label>
+      <input type="text" class="form-control" value="Kauluspaita">
+    </div>
+
+    <div class="form-group">
+      <label>Väri</label>
+      <input type="text" class="form-control" value="Vaaleansininen">
+    </div>
+
+    <div class="form-group">
+      <label>Väri2</label>
+      <input type="text" class="form-control" value="Valkoinen">
+    </div>
+
+
+    <!--
+    <div class="form-group">
+      <label>Väri</label>
+      <textarea class="form-control">        The Elder Scrolls V: Skyrim on Bethesda Softworksin kehittämä ja vuonna 2011 Xbox 360:lle, PlayStation 3:lle ja Microsoft Windowsille julkaisema The Elder Scrolls -tietokoneroolipelisarjan videopeli. Skyrim on The Elder Scrolls -sarjan viides osa.
+      </textarea>
+    </div>
+    -->
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+  </form>
+{% endblock %}
