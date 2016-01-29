@@ -2,10 +2,15 @@
 
 Yleisiä linkkejä:
 
-<päivitä linkit>
-* [Linkki sovellukseeni](http://juhapekm.users.cs.helsinki.fi/vaatekaappi/login)
-* [Linkki dokumentaatiooni](https://www.github.com)
-</päivitä linkit>
+
+
+* [Sovellukseni kirjautumissivu](http://juhapekm.users.cs.helsinki.fi/vaatekaappi/login)
+* [Sovellukseni "items"-sivu](http://juhapekm.users.cs.helsinki.fi/vaatekaappi/items)
+* [Sovellukseni "item"-sivu](http://juhapekm.users.cs.helsinki.fi/vaatekaappi/items/1)
+* [Sovellukseni "item_edit"-sivu](http://juhapekm.users.cs.helsinki.fi/vaatekaappi/items/1/edit)
+* [Linkki dokumentaatiooni](https://github.com/juhapekkamoilanen/Tsoha-Bootstrap)
+
+
 
 ## Työn aihe
 
