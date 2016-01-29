@@ -9,6 +9,7 @@ Yleisiä linkkejä:
 * [Sovellukseni "item"-sivu](http://juhapekm.users.cs.helsinki.fi/vaatekaappi/items/1)
 * [Sovellukseni "item_edit"-sivu](http://juhapekm.users.cs.helsinki.fi/vaatekaappi/items/1/edit)
 * [Linkki dokumentaatiooni](https://github.com/juhapekkamoilanen/Tsoha-Bootstrap)
+* [Linkki tietokantasivulle](http://juhapekm.users.cs.helsinki.fi/vaatekaappi/tietokantayhteys)
 
 
 
