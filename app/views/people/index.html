@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Järjestelmän käyttäjät</h1>
+
+  <p>
+    <a href="{{base_path}}/person/new" class="btn btn-success">Lisää käyttäjä</a>
+  </p>
+  <!-- Taulukko-->
+  <table class="table table-striped table-bordered">
+  <!-- Otsikkorivi-->
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Email</th>
+        <th>Fullname</th>
+        <th>Info</th>
+        <th></th>
+      </tr>
+    </thead>
+  <!-- "DATA"-->
+    <tbody>
+      {% for person in people %}
+        <tr>
+          <td><a href="{{base_path}}/person/{{person.user_id}}">{{person.username}}</td>
+          <td>{{person.password}}</td>
+          <td>{{person.email}}</td>
+          <td>{{person.full_name}}</td>
+          <td>{{person.user_info}}</td>
+          <td><a class="btn btn-default btn-sm" href="{{base_path}}/person/{{person.user_id}}/edit">Muokkaa</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -22,35 +22,38 @@ CREATE TABLE Outfit(
 	outfit_id SERIAL PRIMARY KEY,
 );
 
-CREATE TABLE Outfit_items(
-	outfit_id SERIAL REFERENCES Outfit,
-	item_id SERIAL REFERENCES Item,
-	PRIMARY KEY (outfit_id, item_id)
+--Foreignkey naming:
+-- fk__thistable__tablereferenced i.e.
+-- fk__foreignkeytable__primarykeytable
+
+CREATE TABLE Outfititems(
+	fk_outfititems_outfit SERIAL REFERENCES Outfit,
+	fk_outfititems_item SERIAL REFERENCES Item,
+	PRIMARY KEY (fk_outfititems_outfit, fk_outfititems_item)
 );
 
-CREATE TABLE Outfit_collection(
-	user_id varchar(16) REFERENCES Person,
-	outfit_id SERIAL REFERENCES Outfit,
+CREATE TABLE Outfitcollection(
+	fk_outfitcollection_person SERIAL REFERENCES Person,
+	fk_outfitcollection_outfit SERIAL REFERENCES Outfit,
 	rating INTEGER,
 	comment varchar(160),
-	PRIMARY KEY (user_id, outfit_id)
+	PRIMARY KEY (fk_outfitcollection_person, fk_outfitcollection_outfit)
 );
 
 CREATE TABLE Wardrobe(
-	user_id SERIAL REFERENCES Person,
-	item_id SERIAL REFERENCES Item,
-	PRIMARY KEY (user_id, item_id)
+	fk_wardrobe_person SERIAL REFERENCES Person,
+	fk_wardrobe_item SERIAL REFERENCES Item,
+	PRIMARY KEY (fk_wardrobe_person, fk_wardrobe_item)
 );
 
 CREATE TABLE Wishlist(
-	user_id SERIAL REFERENCES Person,
-	item_id SERIAL REFERENCES Item,
-	PRIMARY KEY (user_id, item_id)
+	fk_wishlist_person SERIAL REFERENCES Person,
+	fk_wishlist_item SERIAL REFERENCES Item,
+	PRIMARY KEY (user_id_wishlist, item_id_wishlist)
 );
 
-CREATE TABLE Use_history(
-	user_id SERIAL REFERENCES Person,
-	item_id SERIAL REFERENCES Item,
+CREATE TABLE Usehistory(
+	fk_usehistory_outfitcollection REFERENCES Outfitcollection
 	date_used DATE,
-	PRIMARY KEY (user_id, item_id, date_used)
+	PRIMARY KEY (fk_usehistory_outfitcollection, date_used)
 );
