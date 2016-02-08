@@ -12,10 +12,10 @@
   });
 
 
-  $routes->get('/items/1', function() {
+/*  $routes->get('/items/1', function() {
     HelloWorldController::item_show();
   });
-
+*/
   $routes->get('/items/1/edit', function() {
     HelloWorldController::item_edit();
   });
@@ -30,6 +30,10 @@
     ItemController::index();
   });
 
+  // Vaatteen esittelysivu
+  $routes->get('/items/:item_id', function($item_id){
+    ItemController::show($item_id);
+  });
 
 
 

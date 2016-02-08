@@ -21,3 +21,14 @@ Vaatekaappi-sovellus
 Sovelluksen avulla käyttäjät voivat pitää kirjaa vaatteistaan ja niistä koostuvista asuyhdistelmistä.
 
 Järjestelmän tarkoituksena on helpottaa vaatteiden valitsemista valmiiksi tallennettujen asukokonaisuuksien avulla. Vaatteista tallennetaan niiden tyyppi (housu, paita, jne), väri, materiaali ym. ominaisuuksia sekä mahdollisesti kuva. Käyttäjä voi koostaa järjestelmään tallennetuista vaatteista mieleisiään asuja, jotka tallennetaan järjestelmään käyttäjän antaman hyvyysarvon kera.
+
+
+## TODO
+
+- Viikko 3 kesken, save-funktio puuttuu
+- Lisäyslomakkeet puuttuu
+- Linkitykset (napit yms.) aivan vaiheessa
+- Testidataa laitettava lisää - asuja ei vielä yhtään tietokannassa!
+- Dokumentaation kaaviot päivitettävä
+- Controllereita, malleja, näkymiä tehtävä lisää ja kuntoon (nyt vasta olemassa ensimmäiset testiversiot: vaatekaappi/people, vaatekaappi/items, vaatekaappi/items/1)
+- SQL kyselyt mietittävä - mitä toimintoja tarvii?

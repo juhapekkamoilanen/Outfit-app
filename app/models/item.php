@@ -15,23 +15,23 @@ class Item extends BaseModel{
 		$query = DB::connection()->prepare('SELECT * FROM Item');
 		//Suoritetaan kysely
 		$query->execute();
-		//tallennetaan rivit kyselystä
-		$rivit = $query->fetchAll();
+		//tallennetaan rowt kyselystä
+		$rowt = $query->fetchAll();
 
 		//alustetaan muuttuja vaatteille
 		$items = Array();
 
-		//käydään rivit läpi ja lisätään items-taulukkoon
-		foreach ($rivit as $rivi) {
-			//tallennetaan kyselyn rivi taulukkoon item-oliona
+		//käydään rowt läpi ja lisätään items-taulukkoon
+		foreach ($rowt as $row) {
+			//tallennetaan kyselyn row taulukkoon item-oliona
 			$items[] = new Item(array(
-				'item_id' => $rivi['item_id'],
-				'type' => $rivi['type'],
-				'brand' => $rivi['brand'],
-				'color' => $rivi['color'],
-				'color_2nd' => $rivi['color_2nd'],
-				'material' => $rivi['material'],
-				'image' => $rivi['image'],
+				'item_id' => $row['item_id'],
+				'type' => $row['type'],
+				'brand' => $row['brand'],
+				'color' => $row['color'],
+				'color_2nd' => $row['color_2nd'],
+				'material' => $row['material'],
+				'image' => $row['image'],
 			));
 		}
 
@@ -40,24 +40,26 @@ class Item extends BaseModel{
 
 	}
 
-	public static function find($id){
-		//Haetaan tietokannasta Item-taulusta ne rivit joissa item_id on parametrinä annettu
-	    $query = DB::connection()->prepare('SELECT * FROM Item WHERE item_id = :id LIMIT 1');
+	public static function find($item_id){
+		//Haetaan tietokannasta Item-taulusta ne rowt joissa item_id on parametrinä annettu
+	    $query = DB::connection()->prepare('SELECT * FROM Item WHERE item_id = :item_id LIMIT 1');
 	    //Suoritetaan kysely
-	    $query->execute(array('item_id' => $id));
-	    //Tallennetaan kyselyn ensimmäinen (ainoa) rivi
+
+	    $foo = 1;
+	    $query->execute(array('item_id' => $item_id));
+	    //Tallennetaan kyselyn ensimmäinen (ainoa) row
 	    $row = $query->fetch();
 
 	    //jos siinä on sisältöä niin luodaan olio ja palautetaan se
 	    if($row){
-	      	$item = new person(array(
-					'item_id' => $rivi['item_id'],
-					'type' => $rivi['type'],
-					'brand' => $rivi['brand'],
-					'color' => $rivi['color'],
-					'color_2nd' => $rivi['color_2nd'],
-					'material' => $rivi['material'],
-					'image' => $rivi['image'],
+	      	$item = new Item(array(
+					'item_id' => $row['item_id'],
+					'type' => $row['type'],
+					'brand' => $row['brand'],
+					'color' => $row['color'],
+					'color_2nd' => $row['color_2nd'],
+					'material' => $row['material'],
+					'image' => $row['image'],
 					));
 
 	      	return $item;
