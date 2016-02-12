@@ -16,3 +16,16 @@ VALUES ('Farkut', 'Cubus', 'Musta', 'Puuvilla', 'mustat_farkut_cubus.png');
 
 INSERT INTO Item (type, brand, color, image)
 VALUES ('Kengät', 'Converse', 'Valkoinen', 'conssit.png');
+
+INSERT INTO Wardrobe (fk_wardrobe_person, fk_wardrobe_item)
+VALUES ('1', '1');
+
+INSERT INTO Wardrobe (fk_wardrobe_person, fk_wardrobe_item)
+VALUES ('1', '2');
+
+INSERT INTO Wardrobe (fk_wardrobe_person, fk_wardrobe_item)
+VALUES ('2', '2');
+
+INSERT INTO Wardrobe (fk_wardrobe_person, fk_wardrobe_item)
+VALUES ('3', '3');
+-- fk_wardrobe_person = 1 AND fk_wardrobe_item = 1 LIMIT 1;

@@ -68,12 +68,11 @@ class Item extends BaseModel{
   	public function save(){
 	    // Lisätään RETURNING id tietokantakyselymme loppuun, niin saamme lisätyn rivin id-sarakkeen arvon
 	    $query = DB::connection()
-	    	->prepare('	INSERT INTO Game 	(item_id, type, brand, color, color_2nd, material, image) 
-	    				VALUES 				(item_id, :type, :brand, :color, :color_2nd, :material, :image) 
-	    									RETURNING id'
+	    	->prepare('	INSERT INTO Item 	(type, brand, color, color_2nd, material, image) 
+	    				VALUES 				(:type, :brand, :color, :color_2nd, :material, :image) 
+	    									RETURNING item_id'
 	    );
-	    $query->execute(array(	'item_id' => $this->item_id, 
-	    						'type' => $this->type, 
+	    $query->execute(array(	'type' => $this->type, 
 	    						'brand' => $this->brand, 
 	    						'color' => $this->color,
 	    						'color_2nd' => $this->color_2nd,
@@ -82,9 +81,11 @@ class Item extends BaseModel{
 	    ));
 	    // Haetaan kyselyn tuottama rivi, joka sisältää lisätyn rivin id-sarakkeen arvon
 	    $row = $query->fetch();
+	    Kint::trace();
+  		Kint::dump($row);
 	    // Asetetaan lisätyn rivin id-sarakkeen arvo oliomme id-attribuutin arvoksi
-	    $this->id = $row['id'];
+	    $this->item_id = $row['item_id'];
 
-	    return $this->id;
+	    return $this->item_id;
   	}
 }
