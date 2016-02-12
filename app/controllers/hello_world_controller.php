@@ -11,7 +11,7 @@
     public static function sandbox(){
       // Testaa koodiasi täällä
       //orig echo 'Hello World!';
-      View::make('helloworld.html');
+      View::make('notimplemented.html');
     }
     public static function item_list(){
       View::make('suunnitelmat/item_list.html');

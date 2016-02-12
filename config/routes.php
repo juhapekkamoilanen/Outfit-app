@@ -22,14 +22,8 @@
     HelloWorldController::login();
   });
 
-
-
-  $routes->get('/items/1', function() {
-    HelloWorldController::item_show();
-  });
-
-  $routes->get('/items/1/edit', function() {
-    HelloWorldController::item_edit();
+    $routes->get('/login', function() {
+    HelloWorldController::login();
   });
 
   // Käyttäjät
@@ -41,8 +35,6 @@
 
   // Vaatteet
 
-  
-
   // Vaatteiden indeksisivu
   $routes->get('/items', function() {
     ItemController::index();
@@ -53,8 +45,6 @@
     ItemController::store();
   });
   
-  
-
   // Vaatteen lisäyssivu
   $routes->get('/items/new', function() {
     ItemController::create();
@@ -64,6 +54,31 @@
   $routes->get('/items/:item_id', function($item_id){
     ItemController::show($item_id);
   });
+
+  // Wardrobes
+
+  // Vaatekaappi - notimplemented
+  $routes->get('/wardrobe', function(){
+    WardrobeController::kesken();
+    //HelloWorldController::sandbox();
+  });  
+
+  // Vaatekaappi - yksittäisen kaapin listanäkymä
+  $routes->get('/wardrobe/:person_id', function($person_id){
+    WardrobeController::show_all_by_person_id($person_id);
+  });
+
+
+  //Outfits
+
+  // Outfits - notimplemented
+  $routes->get('/outfits', function(){
+    OutfitController::index();
+  });  
+
+
+
+
   
 
 

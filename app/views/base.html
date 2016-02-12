@@ -7,7 +7,7 @@
 
     <title>
       {% block title %}
-        Tietokantasovellus
+        Outfit-app
       {% endblock %}
     </title>
 
@@ -33,24 +33,40 @@
             <span class="icon-bar"></span>
           </button>
           <!-- Sovelluksen nimi -->
-          <a class="navbar-brand" href="{{base_path}}">Your wardrobe</a>
+          <a class="navbar-brand" href="{{base_path}}">Home</a>
         </div>
 
         <div class="collapse navbar-collapse" id="navigation">
           
           <ul class="nav navbar-nav">
             <!-- Navigaation linkit -->
-            <li><a href="#">Items</a></li>
+            <!-- <li><a href="{{base_path}}/wardrobe/:person_id">Your wardrobe</a></li> -->
+            <li><a href="{{base_path}}/wardrobe">Your Wardrobe</a></li>
+          </ul>
+
+          <!-- pitäisi lisätä edelliseen linkkiin saada vielä person_id jostain-->
+          
+          <ul class="nav navbar-nav">
+            <!-- Navigaation linkit -->
+            <!-- <li><a href="{{base_path}}/Outfits/:person_id">Outfits</a></li> -->
+            <li><a href="{{base_path}}/outfits">Your Outfits</a></li>
+          </ul>
+
+          <!-- pitäisi lisätä edelliseen linkkiin saada vielä person_id jostain-->
+
+          <ul class="nav navbar-nav">
+            <!-- Navigaation linkit -->
+            <li><a href="{{base_path}}/items">All Items</a></li>
           </ul>
 
           <ul class="nav navbar-nav">
             <!-- Navigaation linkit -->
-            <li><a href="#">Outfits</a></li>
+            <li><a href="{{base_path}}/outfits">All Outfits</a></li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
             <!-- Navigaation linkit -->
-            <li><a href="#">Login</a></li>
+            <li><a href="{{base_path}}/login">Login</a></li>
           </ul>
 
         </div>

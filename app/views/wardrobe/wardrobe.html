@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+<!--
+Yhden henkilön vaatekaappi näkymä
+
+TODO
+-pelkkä copy-paste-ruoka, muokkaa kaikki!
+
+Pitäisi olla hyvin samankaltainen näkymä kuin item/index.html,
+joka kuvaa "vaatevaraston" näkymää.
+Eroavaisuutena "Lisää vaate" -painike,
+vaatekaapissa ei tarvita joka rivin lopussa painiketta!
+-->
+  <h1>Vaatekaapin vaatteet</h1>
+
+  <!-- Uuden vaatteen lisäämispainike -->
+  <p>
+    <a href="{{base_path}}/items/new" class="btn btn-success">Lisää vaate</a>
+  </p>
+
+  <!--  Taulukko, Rivi = yksi vaate vaatekaapissa-->
+  <table class="table table-striped table-bordered">
+    <!-- Otsikkorivi -->
+    <thead>
+      <tr>
+        <th>item_id</th>
+        <th>type</th>
+        <th>brand</th>
+        <th>color</th>
+        <th>color_2nd</th>
+        <th>material</th>
+        <th>image</th>
+        <th></th>
+
+      </tr>
+    </thead>
+
+    <!-- "DATA"-->
+    <tbody>
+      <!-- parametriä (persons_items) luetaan tässä alkio kerrallaan-->
+      {% for item in persons_items %}
+        <tr>
+          <!-- Linkki vaatteen sivulle -->
+          <td><a href="{{base_path}}/items/{{item.item_id}}">{{item.item_id}}</td>
+          <!-- Muut tiedot vaatteesta -->
+          <td>{{item.type}}</td>
+          <td>{{item.brand}}</td>
+          <td>{{item.color}}</td>
+          <td>{{item.color_2nd}}</td>
+          <td>{{item.material}}</td>
+          <td>{{item.image}}</td>
+          <!-- Editointi painike -->
+          <td><a class="btn btn-default btn-sm" href="{{base_path}}/item/{{item.item_id}}/edit">Muokkaa</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  
+{% endblock %}

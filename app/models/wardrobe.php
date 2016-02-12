@@ -55,7 +55,9 @@ class Wardrobe extends BaseModel{
 	    	->prepare('	SELECT * FROM Wardrobe 
 	    				WHERE fk_wardrobe_person = :person_id');
 	    //Suoritetaan kysely
-	    $wr_query->execute(array('item_id' => $item_id)); //Mihin 'item_id' viittaa?!
+	    $wr_query->execute(array('person_id' => $person_id)); //Mihin 'person_id' viittaa?!
+	    //keltaisella merkityt kunhan on samat niin ok?
+
 	    //Tallennetaan rivit
 	    $rows = $wr_query->fetchAll();
 
@@ -75,23 +77,26 @@ class Wardrobe extends BaseModel{
 	    	//haetaan niitä vastaavat Itemit DB:stä
 	    	$item_query = DB::connection()
 	    		->prepare('	SELECT * FROM Item 
-	    					WHERE item_id = :item_id 
+	    					WHERE item_id = :item_id_wr 
 	    					LIMIT 1'
 	    	);
-	    	$item_query->execute(array('item_id' => $row['item_id']));
+	    	//VÄÄRIN: $item_query->execute(array('item_id' => $row['item_id']));
+	    	//wardrobe-taulussa ei ole item_id saraketta, joten $row['item_id']:tä ei ole olemassa
+	    	$item_query->execute(array('item_id_wr' => $row['fk_wardrobe_item']));
 	    	$one_item = $item_query->fetch();
 
 	    	//tallennetaan haettu itemi taulukkoon 
 	    	$persons_items_in_wardrobe[] = new Item(array(
-					'item_id' => $row['item_id'],
-					'type' => $row['type'],
-					'brand' => $row['brand'],
-					'color' => $row['color'],
-					'color_2nd' => $row['color_2nd'],
-					'material' => $row['material'],
-					'image' => $row['image']
+					'item_id' => $one_item['item_id'],
+					'type' => $one_item['type'],
+					'brand' => $one_item['brand'],
+					'color' => $one_item['color'],
+					'color_2nd' => $one_item['color_2nd'],
+					'material' => $one_item['material'],
+					'image' => $one_item['image']
 					));  	
 	    }
+	    Kint::dump($persons_items_in_wardrobe);
 	    return $persons_items_in_wardrobe;
   
   	}

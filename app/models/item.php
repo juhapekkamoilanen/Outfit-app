@@ -14,13 +14,13 @@ class Item extends BaseModel{
 		//Suoritetaan kysely
 		$query->execute();
 		//tallennetaan rowt kyselystä
-		$rowt = $query->fetchAll();
+		$rows = $query->fetchAll();
 
 		//alustetaan muuttuja vaatteille
 		$items = Array();
 
 		//käydään rowt läpi ja lisätään items-taulukkoon
-		foreach ($rowt as $row) {
+		foreach ($rows as $row) {
 			//tallennetaan kyselyn row taulukkoon item-oliona
 			$items[] = new Item(array(
 				'item_id' => $row['item_id'],
@@ -55,7 +55,7 @@ class Item extends BaseModel{
 					'color' => $row['color'],
 					'color_2nd' => $row['color_2nd'],
 					'material' => $row['material'],
-					'image' => $row['image'],
+					'image' => $row['image']
 					));
 
 	      	return $item;
