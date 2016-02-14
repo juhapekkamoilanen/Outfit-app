@@ -25,10 +25,19 @@ Järjestelmän tarkoituksena on helpottaa vaatteiden valitsemista valmiiksi tall
 
 ## TODO
 
-- Viikko 3 kesken, save-funktio puuttuu
-- Lisäyslomakkeet puuttuu
-- Linkitykset (napit yms.) aivan vaiheessa
-- Testidataa laitettava lisää - asuja ei vielä yhtään tietokannassa!
-- Dokumentaation kaaviot päivitettävä
-- Controllereita, malleja, näkymiä tehtävä lisää ja kuntoon (nyt vasta olemassa ensimmäiset testiversiot: vaatekaappi/people, vaatekaappi/items, vaatekaappi/items/1)
-- SQL kyselyt mietittävä - mitä toimintoja tarvii?
+- [x] Viikko 3 kesken, save-funktio puuttuu
+- [x] Lisäyslomakkeet puuttuu
+- [x] Linkitykset (napit yms.) aivan vaiheessa
+- [x] Validatori item:lle
+- [x] Virheilmoitus kun liian lyhyt syöte new-kenttään
+- [x] item/new.html kenttiin attribuuttien välitys
+- [ ] 4.1.2 XSS
+- [ ] 4.2 Muokkaus ja poisto itemille
+- [ ] 4.3 Kirjautuminen 
+- [ ] 4.3.1 Sessiot - oma vaatekaappi linkki
+- [ ] 4.X Kirjautumisohje
+
+- [ ] Testidataa laitettava lisää - asuja ei vielä yhtään tietokannassa!
+- [ ] Dokumentaation kaaviot päivitettävä
+- [ ] Controllereita, malleja, näkymiä tehtävä lisää ja kuntoon (nyt vasta olemassa ensimmäiset testiversiot: vaatekaappi/people, vaatekaappi/items, vaatekaappi/items/1)
+- [ ] SQL kyselyt mietittävä - mitä toimintoja tarvii?

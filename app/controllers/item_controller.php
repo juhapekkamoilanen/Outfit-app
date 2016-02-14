@@ -35,15 +35,20 @@ class ItemController extends BaseController{
         $params = $_POST;
 
         // Alustetaan uusi Item-luokan olion käyttäjän syöttämillä arvoilla
-        $item = new Item(array( 'type' => $params['type'],
+        // Tallennetaan erikseen attribuutit muuttujaan..
+        $attributes = array(    'type' => $params['type'],
                                 'brand' => $params['brand'],
                                 'color' => $params['color'],
                                 'color_2nd' => $params['color_2nd'],
                                 'material' => $params['material'],
                                 'image' => $params['image']
-        ));
-
+        );
+        //..ja luodaan olio attributestaulukon avulla
+        $item = new Item($attributes);
+        // kutsutaan item:in metodia errors, joka tarkistaa olivatko
+        // attribuutit valideja
         $errors = $item->errors();
+        
         if(count($errors) == 0) {
             // Validi item, tallennetaan
             // Kutsutaan alustamamme olion save metodia, joka tallentaa olion tietokantaan
@@ -54,9 +59,9 @@ class ItemController extends BaseController{
         }else{
             // Invalidi syöte
             // Luodaan uusi näkymä johon välitetään syötetyt arvot
-            View::make('item/new.html', array( 
+            View::make('items/new.html', array( 
                                 'errors' => $errors,
-                                'attributes' = $attributes));
+                                'attributes' => $attributes));
         }
 
 

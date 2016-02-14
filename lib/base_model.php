@@ -32,8 +32,8 @@
 
       }
       
-      Kint::dump($errors);
-      Kint::dump('errors()end');
+      //Kint::dump($errors);
+      //Kint::dump('errors()end');
 
       return $errors;
     }
