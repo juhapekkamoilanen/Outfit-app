@@ -1,42 +1,61 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Lisää vaate järjestelmään</h1>
+  <h1>Add new item</h1>
 
   <form method="post" action="{{base_path}}/items">
     <div class="form-group">
-      <label>Tyyppi</label>
-      <input type="text" name="type" class="form-control">
+      <label>Type</label>
+      <input  type="text" 
+              name="type" 
+              class="form-control" 
+              value="{{attributes.type}}">
     </div>
 
     <div class="form-group">
-      <label>Merkki</label>
-      <input type="text" name="brand" class="form-control">
+      <label>Brand</label>
+      <input  type="text"
+              name="brand"
+              class="form-control"
+              value="{{attributes.brand}}">
+
     </div>
 
     <div class="form-group">
-      <label>Väri</label>
-      <input type="text" name="color" class="form-control">
+      <label>Color</label>
+      <input  type="text" 
+              name="color"
+              class="form-control"
+              value="{{attributes.color}}">
     </div>
 
     <div class="form-group">
-      <label>Väri2</label>
-      <textarea name="color_2nd" class="form-control"></textarea>
+      <label>Color2</label>
+      <input  type="text" 
+              name="color_2nd"
+              class="form-control"
+              value="{{attributes.color_2nd}}">
     </div>
 
     <div class="form-group">
-      <label>Materiaali</label>
-      <textarea name="material" class="form-control"></textarea>
+      <label>Material</label>
+      <input  type="text" 
+              name="color"
+              class="form-control"
+              value="{{attributes.material}}">
     </div>
 
     <!--Tätä kuvan lisäämistä pitää vielä miettiä miten kannattaa tässä nyt tehdä
     url on helpoin tapa, mutta ei ehkä fiksuin... -->
     <div class="form-group">
-      <label>Kuva url</label>
-      <textarea name="image" class="form-control"></textarea>
+      <label>Image url</label>
+      <input  type="text" 
+              name="image"
+              class="form-control"
+              value="{{attributes.image}}">
     </div>
 
     <div class="form-group">
-      <button type="submit" class="btn btn-primary">Lisää</button>
+      <button type="submit" class="btn btn-primary">Add</button>
     </div>
   </form>
 {% endblock %}

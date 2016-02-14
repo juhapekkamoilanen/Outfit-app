@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Järjestelmän vaatteet</h1>
+  <h1>All items</h1>
 
   <p>
-    <a href="{{base_path}}/items/new" class="btn btn-success">Lisää vaate</a>
+    <a href="{{base_path}}/items/new" class="btn btn-success">New item</a>
   </p>
 
   <table class="table table-striped table-bordered">
@@ -16,6 +16,8 @@
         <th>color_2nd</th>
         <th>material</th>
         <th>image</th>
+        <th>edit</th>
+        <th>add</th>
         <th></th>
 
       </tr>
@@ -32,7 +34,8 @@
           <td>{{item.color_2nd}}</td>
           <td>{{item.material}}</td>
           <td>{{item.image}}</td>
-          <td><a class="btn btn-default btn-sm" href="{{base_path}}/item/{{item.item_id}}/edit">Muokkaa</a></td>
+          <td><a class="btn btn-default btn-sm" href="{{base_path}}/item/{{item.item_id}}/edit">Edit</a></td>
+          <td><a class="btn btn-default btn-sm" href="{{base_path}}/wardrobe/add">Add</a></td>
         </tr>
       {% endfor %}
     </tbody>

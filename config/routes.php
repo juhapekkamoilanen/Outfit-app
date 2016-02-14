@@ -57,10 +57,15 @@
 
   // Wardrobes
 
-  // Vaatekaappi - notimplemented
+  // Yleiskuva - notimplemented
   $routes->get('/wardrobe', function(){
     WardrobeController::kesken();
-    //HelloWorldController::sandbox();
+  });  
+
+  // Lisää vaate omaan kaappiin
+  // person_id sessiosta!
+  $routes->get('/wardrobe/add', function(){
+    WardrobeController::kesken();
   });  
 
   // Vaatekaappi - yksittäisen kaapin listanäkymä

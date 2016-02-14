@@ -18,12 +18,36 @@
     public function errors(){
       // Lisätään $errors muuttujaan kaikki virheilmoitukset taulukkona
       $errors = array();
+      //Kint::dump('errors()');
+      //Kint::dump($errors);
 
       foreach($this->validators as $validator){
-        // Kutsu validointimetodia tässä ja lisää sen palauttamat virheet errors-taulukkoon
+        // Kutsutaan validointimetodia, jonka nimi on validator-muuttujassa
+        // palautusarvo (taulukko) lisätään errors-taulukkoon
+        $validator_errors = $this->{$validator}();
+        //Kint::dump('lisattava:');
+        //Kint::dump($validator_errors);
+        $errors = array_merge($errors, $validator_errors);
+        //Kint::dump($errors);
+
       }
+      
+      Kint::dump($errors);
+      Kint::dump('errors()end');
 
       return $errors;
     }
+
+    public function validate_string_length($desc, $input, $length) {
+      $errors = array();
+      if($input == '' || $input == null) {
+        $errors[] = "Please insert $desc";
+      }
+      if (strlen($input) < $length) {
+        $errors[] = "$desc must be longer than 3 characters";
+      }
+      return $errors;
+    }
+
 
   }

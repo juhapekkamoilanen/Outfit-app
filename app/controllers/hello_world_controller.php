@@ -10,9 +10,17 @@
 
     public static function sandbox(){
       // Testaa koodiasi täällä
-      //orig echo 'Hello World!';
-      View::make('notimplemented.html');
+      $mpaita = new Item(array(
+                          'type' => 'p',
+                          'brand' => 'i',
+                          'color' => 'pikimusta'
+      ));
+      //kutsutaan itemin errors-metodia
+      $errors = $mpaita->errors();
+
+      Kint::dump($errors);
     }
+
     public static function item_list(){
       View::make('suunnitelmat/item_list.html');
     }

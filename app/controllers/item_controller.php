@@ -2,6 +2,7 @@
 
 class ItemController extends BaseController{
 
+
     //Kaikkien vaatteiden listausnäkymä
 	public static function index(){
         // Haetaan kaikki vaatteet tietokannasta
@@ -10,6 +11,7 @@ class ItemController extends BaseController{
         // Renderöidään views/item kansiossa sijaitseva tiedosto index.html muuttujan $items datalla
         View::make('items/index.html', array('items' => $items));
 	}
+
 
     //Yksittäisnäkymä vaatteelle
 	public static function show($id){
@@ -20,10 +22,12 @@ class ItemController extends BaseController{
         View::make('items/item.html', array('item' => $item));
 	}
 
+
     //Luontinäkymä
     public static function create() {
         View::make('items/new.html');
     }
+
 
     //Store
     public static function store(){
@@ -39,24 +43,22 @@ class ItemController extends BaseController{
                                 'image' => $params['image']
         ));
 
+        $errors = $item->errors();
+        if(count($errors) == 0) {
+            // Validi item, tallennetaan
+            // Kutsutaan alustamamme olion save metodia, joka tallentaa olion tietokantaan
+            $item->save();
+            // Ohjataan käyttäjä lisäyksen jälkeen vaatteen esittelysivulle
+            Redirect::to('/items/' . $item->item_id, array(
+                                'message' => 'Vaate lisätty!'));
+        }else{
+            // Invalidi syöte
+            // Luodaan uusi näkymä johon välitetään syötetyt arvot
+            View::make('item/new.html', array( 
+                                'errors' => $errors,
+                                'attributes' = $attributes));
+        }
 
-        //Pitää ehkä lisätä vielä erilliset metodit järjestelmään lisäämiseksi
-        //ja järjestelmään+omaan vaatekaappiin lisäämiseksi
 
-        // Kutsutaan alustamamme olion save metodia, joka tallentaa olion tietokantaan
-        $item->save();
-
-        // Ohjataan käyttäjä lisäyksen jälkeen vaatteen esittelysivulle
-        Redirect::to('/items/' . $item->item_id, array('message' => 'Vaate lisätty!'));
-  }
+    }
 }
-
-/*
-        $query->execute(array(  'item_id' => $params['item_id'],
-                                'type' => $params['type'],
-                                'brand' => $params['brand'],
-                                'color' => $params['color'],
-                                'color_2nd' => $params['color_2nd'],
-                                'material' => $params['material'],
-                                'image' => $params['image']
-*/

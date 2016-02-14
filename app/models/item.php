@@ -6,6 +6,9 @@ class Item extends BaseModel{
 	//Konstruktori
 	public function __construct($attributes) {
 		parent::__construct($attributes);
+		//validators sisältää validaattoreiden NIMET merkkijonoina
+		$this->validators = array(
+			'validate_type', 'validate_brand', 'validate_color');
 	}
 	
 	public static function all(){
@@ -87,5 +90,37 @@ class Item extends BaseModel{
 	    $this->item_id = $row['item_id'];
 
 	    return $this->item_id;
+  	}
+
+  	//Validators
+
+  	public function validate_type() {
+  		//tarkastetaan että ei ole tyhja ja pidempi kuin 2
+  		//voisi olla myös valikosta valinta
+  		$desc = 'type';
+  		$input = $this->type;
+  		$length = 3;
+  		$errors = parent::validate_string_length($desc, $input, $length);
+  		return $errors;
+  	}
+
+  	public function validate_brand() {
+  		//tarkastetaan että ei ole tyhja ja pidempi kuin 2
+  		//voisi olla myös valikosta valinta
+  		$desc = 'brand';
+  		$input = $this->brand;
+  		$length = 2;
+  		$errors = parent::validate_string_length($desc, $input, $length);
+  		return $errors;
+  	}
+
+  	public function validate_color() {
+  		//tarkastetaan että ei ole tyhja ja pidempi kuin 2
+  		//väri voisi olla myös valikosta valinta
+  		$desc = 'color';
+  		$input = $this->color;
+  		$length = 3;
+  		$errors = parent::validate_string_length($desc, $input, $length);
+  		return $errors;
   	}
 }
