@@ -8,9 +8,14 @@
   
   <h1>{{item.type}}</h1>
   <!-- Painikkeet tähän -->
-  <p>
-    <button class="btn btn-danger">Poista</button> <a href="#" class="btn btn-default">Muokkaa</a>
-  </p>
+ 
+   <form method="post" action="{{base_path}}/items/{{item.item_id}}/destroy" style="display: inline-block;">
+  <button type="submit" class="btn btn-danger">Poista</button>
+  </form>
+
+  <td><a class="btn btn-default btn-sm" href="{{base_path}}/items/{{item.item_id}}/edit">Muokkaa</a></td>
+
+
   <!-- Tiedot tulee listana tähän -->
   <ul>
     <li><strong>Merkki:</strong> {{item.brand}}</li>
@@ -18,8 +23,6 @@
     <li><strong>Väri2:</strong> {{item.color_2nd}}</li>
     <li><strong>Materiaali:</strong> {{item.material}}</li>
   </ul>
-
-  <td><a class="btn btn-default btn-sm" href="{{base_path}}/item/{{item.item_id}}/edit">Muokkaa</a></td>
 
   <p>
   Kuva voisi olla tässä<br>

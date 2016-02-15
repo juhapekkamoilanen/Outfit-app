@@ -31,8 +31,8 @@ Järjestelmän tarkoituksena on helpottaa vaatteiden valitsemista valmiiksi tall
 - [x] Validatori item:lle
 - [x] Virheilmoitus kun liian lyhyt syöte new-kenttään
 - [x] item/new.html kenttiin attribuuttien välitys
-- [ ] 4.1.2 XSS
-- [ ] 4.2 Muokkaus ja poisto itemille
+- [x] 4.2 Muokkaus ja poisto itemille
+- [ ] 4.2 Poiston viesti näkyviin
 - [ ] 4.3 Kirjautuminen 
 - [ ] 4.3.1 Sessiot - oma vaatekaappi linkki
 - [ ] 4.X Kirjautumisohje

@@ -68,6 +68,8 @@ class Item extends BaseModel{
   
   	}
 
+
+
   	public function save(){
 	    // Lisätään RETURNING id tietokantakyselymme loppuun, niin saamme lisätyn rivin id-sarakkeen arvon
 	    $query = DB::connection()
@@ -84,13 +86,43 @@ class Item extends BaseModel{
 	    ));
 	    // Haetaan kyselyn tuottama rivi, joka sisältää lisätyn rivin id-sarakkeen arvon
 	    $row = $query->fetch();
-	    Kint::trace();
-  		Kint::dump($row);
+	    //Kint::trace();
+  		//Kint::dump($row);
 	    // Asetetaan lisätyn rivin id-sarakkeen arvo oliomme id-attribuutin arvoksi
 	    $this->item_id = $row['item_id'];
 
 	    return $this->item_id;
   	}
+
+  	public function update() {
+
+  		$query = DB::connection()
+	    	->prepare('	UPDATE 	Item 
+	    				SET 	type = :type, 
+	    						brand = :brand,
+								color = :color, 
+								color_2nd = :color_2nd,
+								material = :material, 
+								image = :image
+						WHERE 	item_id = :item_id'
+	    );
+	    $query->execute(array(	'item_id' => $this->item_id,
+	    						'type' => $this->type, 
+	    						'brand' => $this->brand, 
+	    						'color' => $this->color,
+	    						'color_2nd' => $this->color_2nd,
+	    						'material' => $this->material,
+	    						'image' => $this->image
+	    ));
+  	}
+
+  	public function destroy() {
+  		$query = DB::connection()
+  			->prepare(' DELETE from Item
+  						WHERE item_id = :item_id');
+		$query->execute(array('item_id' => $this->item_id));
+  	}
+
 
   	//Validators
 

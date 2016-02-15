@@ -40,10 +40,7 @@
     ItemController::index();
   });
 
-  // Store
-  $routes->post('/items', function() {
-    ItemController::store();
-  });
+  
   
   // Vaatteen lisäyssivu
   $routes->get('/items/new', function() {
@@ -53,6 +50,28 @@
   // Vaatteen esittelysivu
   $routes->get('/items/:item_id', function($item_id){
     ItemController::show($item_id);
+  });
+
+  // Vaatteen muokkaussivu - esittäminen
+  $routes->get('/items/:item_id/edit', function($item_id){
+    ItemController::edit($item_id);
+  });
+
+  // Vaatteen muokkaussivu - käsittely
+  $routes->post('/items/:item_id/edit', function($item_id){
+    ItemController::update($item_id);
+  });
+
+  // Vaatteen poisto
+  $routes->post('/items/:item_id/destroy', function($item_id){
+    Kint::dump('route ok poistolle');
+    ItemController::destroy($item_id);
+    //HelloWorldController::sandbox();
+  });
+
+  // Store
+  $routes->post('/items', function() {
+    ItemController::store();
   });
 
   // Wardrobes
