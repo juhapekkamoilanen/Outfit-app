@@ -19,17 +19,17 @@
     HelloWorldController::sandbox();
   });
   $routes->get('/login', function() {
-    HelloWorldController::login();
+    UserController::login();
   });
 
-    $routes->get('/login', function() {
-    HelloWorldController::login();
+    $routes->post('/login', function() {
+    UserController::handle_login();
   });
 
   // Käyttäjät
 
   $routes->get('/people', function() {
-    PersonController::index();
+    UserController::index();
   });
 
 
@@ -64,7 +64,6 @@
 
   // Vaatteen poisto
   $routes->post('/items/:item_id/destroy', function($item_id){
-    Kint::dump('route ok poistolle');
     ItemController::destroy($item_id);
     //HelloWorldController::sandbox();
   });

@@ -13,6 +13,10 @@ vaatekaapissa ei tarvita joka rivin lopussa painiketta!
 -->
   <h1>Vaatekaapin vaatteet</h1>
 
+  {% if user_logged_in %}
+    <h1>{{user_logged_in.username}}'s vaatekaappi</h1>
+  {% endif %}
+
   <!-- Uuden vaatteen lisäämispainike -->
   <p>
     <a href="{{base_path}}/items/new" class="btn btn-success">Lisää vaate</a>

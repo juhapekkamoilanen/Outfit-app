@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
   <h1>Painikkeet</h1>
+
+  {% if user_logged_in %}
+    <h1>Käyttäjän {{user_logged_in.username}} pelikirjasto</h1>
+  {% endif %}
+
+
   <button>Tavallinen painike</button>
   <button class="btn btn-default">Bootstrap painike</button>
   <button class="btn btn-primary">Bootstrap painike</button>

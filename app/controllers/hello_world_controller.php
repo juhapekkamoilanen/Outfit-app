@@ -4,21 +4,15 @@
 
     public static function index(){
       // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
-   	  View::make('home.html');
+      View::make('home.html');
+
       //echo 'Tämä on etusivu!';
     }
 
     public static function sandbox(){
       // Testaa koodiasi täällä
-      $mpaita = new Item(array(
-                          'type' => 'p',
-                          'brand' => 'i',
-                          'color' => 'pikimusta'
-      ));
-      //kutsutaan itemin errors-metodia
-      $errors = $mpaita->errors();
-
-      Kint::dump($errors);
+      //$logged_user = self::get_user_logged_in();
+      View::make('helloworld.html');
     }
 
     public static function item_list(){

@@ -41,7 +41,7 @@ class Person extends BaseModel{
 
 	public static function find($id){
 		//Haetaan tietokannasta Person-taulusta ne rivit joissa user_id on parametrinä annettu
-	    $query = DB::connection()->prepare('SELECT * FROM Person WHERE user_id = :id LIMIT 1');
+	    $query = DB::connection()->prepare('SELECT * FROM Person WHERE user_id = :user_id LIMIT 1');
 	    //Suoritetaan kysely
 	    $query->execute(array('user_id' => $id));
 	    //Tallennetaan kyselyn ensimmäinen (ainoa) rivi
@@ -49,20 +49,52 @@ class Person extends BaseModel{
 
 	    //jos siinä on sisältöä niin luodaan olio ja palautetaan se
 	    if($row){
-	      	$person = new person(array(
-					'user_id' => $rivi['user_id'],
-					'username' => $rivi['username'],
-					'password' => $rivi['password'],
-					'email' => $rivi['email'],
-					'full_name' => $rivi['full_name'],
-					'user_info' => $rivi['user_info'],
+	      	$person = new Person(array(
+					'user_id' => $row['user_id'],
+					'username' => $row['username'],
+					'password' => $row['password'],
+					'email' => $row['email'],
+					'full_name' => $row['full_name'],
+					'user_info' => $row['user_info'],
 					));
 
 	      	return $person;
 	    }
 
 	    return null;
-  
   	}
+
+  	public static function authenticate($username, $password) {
+  		$query = DB::connection()->prepare('SELECT * FROM Person
+  											WHERE username = :username
+  											AND password = :password
+  											LIMIT 1');
+  		//Suoritetaan kysely
+	    $query->execute(array('username' => $username, 'password' => $password));
+	    //Tallennetaan kyselyn ensimmäinen (ainoa) rivi
+	    $row = $query->fetch();
+  		//jos siinä on sisältöä niin luodaan olio ja palautetaan se
+	    return self::create_object($row);
+
+  	}
+
+  	private static function create_object($db_row) {
+  		if($db_row){
+	      	$person = new Person(array(
+					'user_id' => $db_row['user_id'],
+					'username' => $db_row['username'],
+					'password' => $db_row['password'],
+					'email' => $db_row['email'],
+					'full_name' => $db_row['full_name'],
+					'user_info' => $db_row['user_info'],
+					));
+
+	      	return $person;
+	    }
+
+	    return null;
+  	} 
+
+
 
 }

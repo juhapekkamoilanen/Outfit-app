@@ -2,6 +2,12 @@
 {% block content %}
   <h1>All items</h1>
 
+  {% if message %}
+    <div class="alert alert-success">
+      {{message}}
+    </div>
+  {% endif %}  
+
   <p>
     <a href="{{base_path}}/items/new" class="btn btn-success">New item</a>
   </p>

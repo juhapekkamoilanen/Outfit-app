@@ -1,4 +1,5 @@
 <?php
+/* Ei käytössä - tilalla userController
 
 class PersonController extends BaseController{
 	
@@ -9,3 +10,4 @@ class PersonController extends BaseController{
 	    View::make('people/index.html', array('people' => $people));
 	}
 }
+*/

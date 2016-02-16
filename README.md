@@ -32,12 +32,21 @@ Järjestelmän tarkoituksena on helpottaa vaatteiden valitsemista valmiiksi tall
 - [x] Virheilmoitus kun liian lyhyt syöte new-kenttään
 - [x] item/new.html kenttiin attribuuttien välitys
 - [x] 4.2 Muokkaus ja poisto itemille
+- [ ] Muuta toistuvat painikkeet yms makroiksi
 - [ ] 4.2 Poiston viesti näkyviin
-- [ ] 4.3 Kirjautuminen 
-- [ ] 4.3.1 Sessiot - oma vaatekaappi linkki
+- [x] 4.3 Kirjautuminen (session luonti)
+- [x] 4.3.1 Session käyttäminen - oma vaatekaappi linkki
 - [ ] 4.X Kirjautumisohje
+- [ ] Wardrobe-näkymässä "lisää vaate"-nappi toimittava niin että lisää samalla henkilön vaatekaappiin
 
+
+- [ ] /User/new.html
+- [ ] /User/edit.html
+
+- [ ] viestien ja virheiden näyttäminen basemalliin?
+- [x] Tyhjät virheilmoitukset pois näkyvistä (vihreä loota)
 - [ ] Testidataa laitettava lisää - asuja ei vielä yhtään tietokannassa!
 - [ ] Dokumentaation kaaviot päivitettävä
 - [ ] Controllereita, malleja, näkymiä tehtävä lisää ja kuntoon (nyt vasta olemassa ensimmäiset testiversiot: vaatekaappi/people, vaatekaappi/items, vaatekaappi/items/1)
 - [ ] SQL kyselyt mietittävä - mitä toimintoja tarvii?
+- [ ] Muokkaa-napin (Your wardrobe - näkymässä) ei saa muuttaa muiden lisäämiä samoja vaatteita

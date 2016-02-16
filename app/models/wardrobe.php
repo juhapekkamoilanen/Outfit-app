@@ -61,8 +61,6 @@ class Wardrobe extends BaseModel{
 	    //Tallennetaan rivit
 	    $rows = $wr_query->fetchAll();
 
-	    //DEBUG
-	    Kint::dump($rows);
 
 	    //alustetaan muuttuja vaatekaapin vaatteille
 		$persons_items_in_wardrobe = Array();
@@ -96,7 +94,6 @@ class Wardrobe extends BaseModel{
 					'image' => $one_item['image']
 					));  	
 	    }
-	    Kint::dump($persons_items_in_wardrobe);
 	    return $persons_items_in_wardrobe;
   
   	}
