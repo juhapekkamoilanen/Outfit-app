@@ -2,7 +2,7 @@
 
 Yleisiä linkkejä:
 
-
+* [Katso käynnistysopas](https://github.com/juhapekkamoilanen/Tsoha-Bootstrap/tree/master/doc/Kaynnistysopas1.pdf)
 
 * [Sovellukseni kirjautumissivu](http://juhapekm.users.cs.helsinki.fi/vaatekaappi/login)
 * [Sovellukseni "items"-sivu](http://juhapekm.users.cs.helsinki.fi/vaatekaappi/items)
