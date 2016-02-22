@@ -97,8 +97,42 @@ class Wardrobe extends BaseModel{
 	    return $persons_items_in_wardrobe;
   
   	}
+        
+        public static function add_item_for_person($item_id, $person_id){
+            $add_query = DB::connection()
+	    	->prepare('INSERT INTO Wardrobe (fk_wardrobe_person, fk_wardrobe_item)'
+                        . 'VALUES (:person_id, :item_id');
+            $add_query->execute(array('person_id' => $person_id, 'item_id' => $item_id));
+            
+        }
+        /*
+         * public function save(){
+	    // Lisätään RETURNING id tietokantakyselymme loppuun, niin saamme lisätyn rivin id-sarakkeen arvon
+	    $query = DB::connection()
+	    	->prepare('	INSERT INTO Item 	(type, brand, color, color_2nd, material, image) 
+	    				VALUES 				(:type, :brand, :color, :color_2nd, :material, :image) 
+	    									RETURNING item_id'
+	    );
+	    $query->execute(array(	'type' => $this->type, 
+	    						'brand' => $this->brand, 
+	    						'color' => $this->color,
+	    						'color_2nd' => $this->color_2nd,
+	    						'material' => $this->material,
+	    						'image' => $this->image
+	    ));
+	    // Haetaan kyselyn tuottama rivi, joka sisältää lisätyn rivin id-sarakkeen arvon
+	    $row = $query->fetch();
+	    //Kint::trace();
+  		//Kint::dump($row);
+	    // Asetetaan lisätyn rivin id-sarakkeen arvo oliomme id-attribuutin arvoksi
+	    $this->item_id = $row['item_id'];
+
+	    return $this->item_id;
+  	}
+         * 
+         * 
+         */
+        
+        
 	
 }
-/*
-SELECT * FROM Wardrobe WHERE fk_wardrobe_person = 1 AND fk_wardrobe_item = 1 LIMIT 1;
-*/
