@@ -18,7 +18,7 @@ class WardrobeController extends BaseController{
 	}
         
         //Store - KOPIO item-kontrollerista
-        /*
+        
         public static function store(){
         // POST-pyynnön muuttujat sijaitsevat $_POST nimisessä assosiaatiolistassa
         $params = $_POST;

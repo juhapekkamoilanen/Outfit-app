@@ -23,8 +23,9 @@
         <th>material</th>
         <th>image</th>
         <th>edit</th>
+        {% if user_logged_in %}
         <th>add</th>
-        <th></th>
+        {% endif %}
 
       </tr>
     </thead>
@@ -41,7 +42,18 @@
           <td>{{item.material}}</td>
           <td>{{item.image}}</td>
           <td><a class="btn btn-default btn-sm" href="{{base_path}}/items/{{item.item_id}}/edit">Edit</a></td>
-          <td><a class="btn btn-default btn-sm" href="{{base_path}}/wardrobe/add">Add</a></td>
+
+          {% if user_logged_in %}
+          <td>
+            <form method="post" action="{{base_path}}/wardrobe/{{user_logged_in.user_id}}/add">
+              <div class="form-group">
+                <input type="hidden" name="item_id" value="{{item.item_id}}">
+                <button type="submit" class="btn btn-default btn-sm">Add2</button>
+              </div>
+            </form>
+          </td>
+          {% endif %}
+
         </tr>
       {% endfor %}
     </tbody>

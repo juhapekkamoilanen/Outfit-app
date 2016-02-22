@@ -56,4 +56,14 @@ class UserController extends BaseController{
 		}
 			
 	}
+
+	public static function save_item_to_wardrobe(){
+		/*
+		
+		*/
+
+	}
+
+	
+
 }

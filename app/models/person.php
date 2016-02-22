@@ -93,7 +93,15 @@ class Person extends BaseModel{
 	    }
 
 	    return null;
-  	} 
+  	}
+
+  	public static function add_item_for_person($item_id, $person_id){
+        $add_query = DB::connection()
+    			->prepare('INSERT INTO Wardrobe (fk_wardrobe_person, fk_wardrobe_item)'
+                    . 'VALUES (:person_id, :item_id');
+        $add_query->execute(array('person_id' => $person_id, 'item_id' => $item_id));
+            
+    }
 
 
 
