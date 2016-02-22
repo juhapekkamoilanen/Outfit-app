@@ -50,3 +50,4 @@ Järjestelmän tarkoituksena on helpottaa vaatteiden valitsemista valmiiksi tall
 - [ ] Muokkaa-napin (Your wardrobe - näkymässä) ei saa muuttaa muiden lisäämiä samoja vaatteita
 
 testimuokkaus
+testimuokkaus - laitoksen netbeans
