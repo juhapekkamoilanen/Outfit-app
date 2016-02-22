@@ -48,3 +48,5 @@ Järjestelmän tarkoituksena on helpottaa vaatteiden valitsemista valmiiksi tall
 - [ ] Testidataa laitettava lisää - asuja ei vielä yhtään tietokannassa!
 - [ ] Dokumentaation kaaviot päivitettävä
 - [ ] Muokkaa-napin (Your wardrobe - näkymässä) ei saa muuttaa muiden lisäämiä samoja vaatteita
+
+testimuokkaus
