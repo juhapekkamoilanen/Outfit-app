@@ -18,6 +18,11 @@ class UserController extends BaseController{
 		View::make('User/login.html');
 	}
 
+	public static function logout(){
+    	$_SESSION['user'] = null;
+    	Redirect::to('/login', array('message' => 'You have logget out!'));
+  	}
+
 	public static function handle_login(){
 		//_POST parametrit (superglobaali)
 		//sisältää key-value taulukon, jossa key:t ovat html-lomakkeen ruuduille (form-group)

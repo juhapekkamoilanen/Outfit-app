@@ -97,42 +97,7 @@ class Wardrobe extends BaseModel{
 	    return $persons_items_in_wardrobe;
   
   	}
-	/*
-	Tämä saattaa olla tarpeeton metodi
-	Tärkeämpi on etsiä wardrobe-taulusta tietyn henkilön vaatteet
-
-	public static function find($person_id, $item_id){
-		//Haetaan tietokannasta Wardrobe-taulusta ne rowt joissa 
-		//person_id ja item_id vastaavat parametreina annettuja
-	    $query = DB::connection()
-	    	->prepare('	SELECT * FROM Wardrobe 
-	    				WHERE fk_wardrobe_person = :person_id
-	    				AND fk_wardrobe_item = :item_id
-	    				LIMIT 1');
-	    //Suoritetaan kysely
-	    $query->execute(array('item_id' => $item_id));
-	    //Tallennetaan kyselyn ensimmäinen (ainoa) row
-	    $row = $query->fetch();
-
-	    //jos siinä on sisältöä niin luodaan olio ja palautetaan se
-	    if($row){
-	      	$item = new Item(array(
-					'item_id' => $row['item_id'],
-					'type' => $row['type'],
-					'brand' => $row['brand'],
-					'color' => $row['color'],
-					'color_2nd' => $row['color_2nd'],
-					'material' => $row['material'],
-					'image' => $row['image'],
-					));
-
-	      	return $item;
-	    }
-
-	    return null;
-  
-  	}
-  	*/
+	
 }
 /*
 SELECT * FROM Wardrobe WHERE fk_wardrobe_person = 1 AND fk_wardrobe_item = 1 LIMIT 1;

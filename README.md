@@ -36,7 +36,7 @@ Järjestelmän tarkoituksena on helpottaa vaatteiden valitsemista valmiiksi tall
 - [x] 4.2 Poiston viesti näkyviin
 - [x] 4.3 Kirjautuminen (session luonti)
 - [x] 4.3.1 Session käyttäminen - oma vaatekaappi linkki
-- [ ] 4.X Kirjautumisohje
+- [x] 4.X Kirjautumisohje
 
 - [ ] /User/new.html
 - [ ] /User/edit.html

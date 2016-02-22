@@ -32,6 +32,10 @@
     UserController::index();
   });
 
+  $routes->post('/logout', function(){
+    UserController::logout();
+  });
+
 
   // Vaatteet
 
@@ -89,6 +93,10 @@
   // Vaatekaappi - yksittäisen kaapin listanäkymä
   $routes->get('/wardrobe/:person_id', function($person_id){
     WardrobeController::show_all_by_person_id($person_id);
+  });
+
+  $routes->get('/wardrobe/', function(){
+    WardrobeController::show_all_by_person_id(null);
   });
 
 

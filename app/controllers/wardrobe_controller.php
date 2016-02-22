@@ -9,6 +9,7 @@ class WardrobeController extends BaseController{
 
     //Näytä tietyn henkilön kaikki vaatteet
 	public static function show_all_by_person_id($id){
+        self::check_logged_in();
         // Haetaan kaikki vaatteet tietokannasta person_id:n perusteella
         $persons_items = Wardrobe::find_by_person_id($id);
         // Renderöidään views/wardrobe kansiossa sijaitseva tiedosto
