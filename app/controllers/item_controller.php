@@ -82,13 +82,7 @@ class ItemController extends BaseController{
         //$item_to_destroy->destroy();
         //Ohjataan käyttäjä vaatteiden listaussivulle viestin kanssa
         Redirect::to('/items', array('message' => 'Item successfully deleted'));
-        
-
     }
-
-
-
- 
 
     //Store
     public static function store(){

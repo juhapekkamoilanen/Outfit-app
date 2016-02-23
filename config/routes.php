@@ -36,6 +36,14 @@
     UserController::logout();
   });
 
+  $routes->get('/register/', function(){
+    UserController::register();
+  });
+
+  $routes->post('/register/', function(){
+    UserController::handle_register();
+  });
+
   
 
   // Vaatteet

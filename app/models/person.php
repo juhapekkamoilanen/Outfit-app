@@ -6,6 +6,33 @@ class Person extends BaseModel{
 	//Konstruktori
 	public function __construct($attributes) {
 		parent::__construct($attributes);
+		//validators sisältää validaattoreiden NIMET merkkijonoina
+		$this->validators = array(
+			'validate_username', 'validate_password', 'validate_email');
+	}
+
+	// Lisää uusi käyttäjä järjestelmään
+	
+	public function save(){
+		// Lisätään RETURNING id tietokantakyselymme loppuun, niin saamme lisätyn rivin id-sarakkeen arvon
+	    $query = DB::connection()
+	    	->prepare('	INSERT INTO Person 	(username, password, email, full_name, user_info) 
+	    				VALUES 				(:u, :p, :e, :f, :i) 
+	    									RETURNING user_id'
+	    );
+	    $query->execute(array(	'u' => $this->username, 
+	    						'p' => $this->password, 
+	    						'e' => $this->email,
+	    						'f' => $this->full_name,
+	    						'i' => $this->user_info
+	    ));
+	    // Haetaan kyselyn tuottama rivi, joka sisältää lisätyn rivin id-sarakkeen arvon
+	    // id-sarakkeeseen generoituu SERIAL luku id:ksi queryn suorituksen yhteydessä
+	    $row = $query->fetch();
+	    // Asetetaan lisätyn rivin id-sarakkeen arvo oliomme id-attribuutin arvoksi
+	    $this->user_id = $row['user_id'];
+
+	    return $this->user_id;
 	}
 	
 	public static function all(){
@@ -16,7 +43,6 @@ class Person extends BaseModel{
 		//tallennetaan rivit kyselystä
 		$rivit = $query->fetchAll();
 
-		Kint::dump($rivit);
 		//alustetaan muuttuja vaatteille
 		$people = Array();
 
@@ -102,6 +128,36 @@ class Person extends BaseModel{
         $add_query->execute(array('person_id' => $person_id, 'item_id' => $item_id));
             
     }
+
+
+    //Validators
+
+  	public function validate_username() {
+  		//tarkastetaan että ei ole tyhja ja pidempi kuin 3
+  		$desc = 'Username';
+  		$input = $this->username;
+  		$length = 3;
+  		$errors = parent::validate_string_length($desc, $input, $length);
+  		return $errors;
+  	}
+
+  	public function validate_password() {
+  		//tarkastetaan että ei ole tyhja ja pidempi kuin 3
+  		$desc = 'Password';
+  		$input = $this->password;
+  		$length = 3;
+  		$errors = parent::validate_string_length($desc, $input, $length);
+  		return $errors;
+  	}
+
+  	public function validate_email() {
+  		//tarkastetaan että ei ole tyhja ja pidempi kuin 3
+  		$desc = 'Email';
+  		$input = $this->email;
+  		$length = 3;
+  		$errors = parent::validate_string_length($desc, $input, $length);
+  		return $errors;
+  	}
 
 
 

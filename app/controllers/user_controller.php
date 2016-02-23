@@ -8,6 +8,46 @@ class UserController extends BaseController{
 	    // Renderöidään views/people kansiossa sijaitseva tiedosto index.html muuttujan $people datalla
 	    View::make('User/index.html', array('people' => $people));
 	}
+	//Luontinäkymä
+    public static function register() {
+        View::make('User/register.html');
+    }
+
+    public static function handle_register() {
+        // POST-pyynnön muuttujat sijaitsevat $_POST nimisessä assosiaatiolistassa
+        $params = $_POST;
+
+        // Alustetaan uusi Person-luokan olion käyttäjän syöttämillä arvoilla
+        // Tallennetaan erikseen attribuutit muuttujaan..
+        $attributes = array(    'username' => $params['username'],
+                                'password' => $params['password'],
+                                'email' => $params['email'],
+                                'full_name' => $params['full_name'],
+                                'user_info' => $params['user_info']
+        );
+        //..ja luodaan olio attributestaulukon avulla
+        $new_user = new Person($attributes);
+        
+        // kutsutaan item:in metodia errors, joka tarkistaa olivatko
+        // attribuutit valideja
+        $errors = $new_user->errors();
+
+        if(count($errors) == 0) {
+            // Validi item, tallennetaan
+            // Kutsutaan alustamamme olion save metodia, joka tallentaa olion tietokantaan
+            $new_user->save();
+
+            // Ohjataan käyttäjä rekisteröitymisen jälkeen kirjautumissivulle
+            Redirect::to('/login', array('message' => 'Registeration complete! Please login'));
+        }else{
+            // Invalidi syöte
+            // Luodaan uusi näkymä johon välitetään syötetyt arvot
+            View::make('User/register.html', array( 
+                                'errors' => $errors,
+                                'attributes' => $attributes));
+        }
+    }
+
 
     //Keskeneräisten sivujen näkymä
 	public static function kesken(){
@@ -23,6 +63,7 @@ class UserController extends BaseController{
     	Redirect::to('/login', array('message' => 'You have logget out!'));
   	}
 
+  	//Käsittele ḱirjautuminen
 	public static function handle_login(){
 		//_POST parametrit (superglobaali)
 		//sisältää key-value taulukon, jossa key:t ovat html-lomakkeen ruuduille (form-group)

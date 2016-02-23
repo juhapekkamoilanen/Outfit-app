@@ -86,8 +86,7 @@ class Item extends BaseModel{
 	    ));
 	    // Haetaan kyselyn tuottama rivi, joka sisältää lisätyn rivin id-sarakkeen arvon
 	    $row = $query->fetch();
-	    //Kint::trace();
-  		//Kint::dump($row);
+	    
 	    // Asetetaan lisätyn rivin id-sarakkeen arvo oliomme id-attribuutin arvoksi
 	    $this->item_id = $row['item_id'];
 
