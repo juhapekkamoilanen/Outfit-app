@@ -8,18 +8,19 @@ class WardrobeController extends BaseController{
 	}
 
     //Näytä tietyn henkilön kaikki vaatteet
-	public static function show_all_by_person_id($id){
+	public static function show_all_by_person_id(){
         self::check_logged_in();
-        // Haetaan kaikki vaatteet tietokannasta person_id:n perusteella
-        $persons_items = Wardrobe::find_by_person_id($id);
+        // Haetaan kaikki vaatteet tietokannasta kirjautuneen käyttäjän id:n perusteella
+        $persons_items = Wardrobe::find_by_person_id($_SESSION['user']);
         // Renderöidään views/wardrobe kansiossa sijaitseva tiedosto
         // wardrobe.html muuttujan $persons_items datalla
         View::make('wardrobe/wardrobe.html', array('persons_items' => $persons_items));
 	}
+     
+
+    //Store - KOPIO item-kontrollerista
         
-        //Store - KOPIO item-kontrollerista
-        
-        public static function store(){
+    public static function store(){
         // POST-pyynnön muuttujat sijaitsevat $_POST nimisessä assosiaatiolistassa
         $params = $_POST;
 
@@ -52,6 +53,16 @@ class WardrobeController extends BaseController{
                                 'errors' => $errors,
                                 'attributes' => $attributes));
         }
+    }
+
+    public static function save_item_to_wardrobe(){
+        self::check_logged_in();
+        $params = $_POST;
+        Wardrobe::add_item_for_person($params['item_id'], $_SESSION['user']);
+        Redirect::to('/items/', array('message' => 'Vaate lisätty!'));
+
+
+    }
         
-         */
+        
 }

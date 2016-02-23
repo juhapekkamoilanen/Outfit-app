@@ -97,6 +97,20 @@ class Wardrobe extends BaseModel{
 	    return $persons_items_in_wardrobe;
   
   	}
+
+  	public static function add_item_for_person($item_id, $person_id){
+  		Kint::dump('wardrobe.add_item_for_person()');
+  		Kint::dump($item_id);
+  		Kint::dump($person_id);
+  		
+        $add_query = DB::connection()
+    			->prepare('	INSERT INTO Wardrobe (fk_wardrobe_person, fk_wardrobe_item)
+    						VALUES (:person_id, :item_id)'
+    			);
+        $add_query->execute(array('person_id' => $person_id, 'item_id' => $item_id));
+        
+            
+    }
         
         
         /*
@@ -124,7 +138,8 @@ class Wardrobe extends BaseModel{
 	    return $this->item_id;
   	}
          * 
-         * 
+         * INSERT INTO Wardrobe (fk_wardrobe_person, fk_wardrobe_item)
+    		VALUES (1, 8)
          */
         
         

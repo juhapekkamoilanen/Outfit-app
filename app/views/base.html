@@ -38,7 +38,7 @@
 
         <div class="collapse navbar-collapse" id="navigation">
           
-          
+        {% if user_logged_in %}  
           <ul class="nav navbar-nav">
             <!-- Navigaation linkit -->
             <!-- <li><a href="{{base_path}}/wardrobe/:person_id">Your wardrobe</a></li> -->
@@ -52,7 +52,8 @@
             <!-- <li><a href="{{base_path}}/Outfits/:person_id">Outfits</a></li> -->
             <li><a href="{{base_path}}/outfits">Your Outfits</a></li>
           </ul>
-
+        {% endif %}
+        
           <!-- pitäisi lisätä edelliseen linkkiin saada vielä person_id jostain-->
 
           <ul class="nav navbar-nav">

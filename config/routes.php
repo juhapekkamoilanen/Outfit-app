@@ -18,29 +18,30 @@
   $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
   });
-  $routes->get('/login', function() {
+  $routes->get('/login/', function() {
     UserController::login();
   });
 
-    $routes->post('/login', function() {
+    $routes->post('/login/', function() {
     UserController::handle_login();
   });
 
   // Käyttäjät
 
-  $routes->get('/people', function() {
+  $routes->get('/people/', function() {
     UserController::index();
   });
 
-  $routes->post('/logout', function(){
+  $routes->post('/logout/', function(){
     UserController::logout();
   });
 
+  
 
   // Vaatteet
 
   // Vaatteiden indeksisivu
-  $routes->get('/items', function() {
+  $routes->get('/items/', function() {
     ItemController::index();
   });
 
@@ -73,30 +74,23 @@
   });
 
   // Store
-  $routes->post('/items', function() {
+  $routes->post('/items/', function() {
     ItemController::store();
   });
 
+
   // Wardrobes
 
-  // Yleiskuva - notimplemented
-  $routes->get('/wardrobe', function(){
-    WardrobeController::kesken();
-  });  
+  // Näytä oma vaatekaappi
 
-  // Lisää vaate omaan kaappiin
-  // person_id sessiosta!
-  $routes->get('/wardrobe/add', function(){
-    WardrobeController::kesken();
-  });  
-
-  // Vaatekaappi - yksittäisen kaapin listanäkymä
-  $routes->get('/wardrobe/:person_id', function($person_id){
-    WardrobeController::show_all_by_person_id($person_id);
+  $routes->get('/wardrobe/:user_id/', function(){
+    WardrobeController::show_all_by_person_id();
   });
 
-  $routes->get('/wardrobe/', function(){
-    WardrobeController::show_all_by_person_id(null);
+  // Lisää vaate omaan vaatekaappiin
+
+  $routes->post('/wardrobe/:user_id/add/', function(){
+    WardrobeController::save_item_to_wardrobe();
   });
 
 
