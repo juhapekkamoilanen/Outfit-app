@@ -40,7 +40,7 @@ Järjestelmän tarkoituksena on helpottaa vaatteiden valitsemista valmiiksi tall
 
 - [ ] /User/new.html
 - [ ] /User/edit.html
-- [ ] Item listaus näkymän napilla vaatekaappiin lisäys
+- [x] Item listaus näkymän napilla vaatekaappiin lisäys
 - [ ] Wardrobe-näkymässä "lisää vaate"-nappi toimittava niin että lisää samalla henkilön vaatekaappiin
 
 - [ ] viestien ja virheiden näyttäminen basemalliin?

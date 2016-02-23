@@ -16,12 +16,25 @@ class WardrobeController extends BaseController{
         // wardrobe.html muuttujan $persons_items datalla
         View::make('wardrobe/wardrobe.html', array('persons_items' => $persons_items));
 	}
-     
 
-    //Store - KOPIO item-kontrollerista
-        
-    public static function store(){
-        // POST-pyynnön muuttujat sijaitsevat $_POST nimisessä assosiaatiolistassa
+    //tallenna vaate vaatekaappiin kirjautuneen user_id:n ja _POST item_id:n perusteella
+    //tätä metodi kutsutaan "All items"näkymästä "Add"-painikkeella
+    public static function save_item_to_wardrobe(){
+        self::check_logged_in();
+        $params = $_POST;
+        Wardrobe::add_item_for_person($params['item_id'], $_SESSION['user']);
+        Redirect::to('/items/', array('message' => 'Vaate lisätty!'));
+    }
+
+    //luo uuden vaatteen luontinäkymä
+    public static function create_new_item_to_wardrobe(){
+        self::check_logged_in();
+        View::make('wardrobe/new_item.html');
+    }
+
+    //tallenna uusi item järjestelmään ja vaatekaappiin
+    public static function save_new_item_to_wardrobe(){
+        self::check_logged_in();
         $params = $_POST;
 
         // Alustetaan uusi Item-luokan olion käyttäjän syöttämillä arvoilla
@@ -43,26 +56,21 @@ class WardrobeController extends BaseController{
             // Validi item, tallennetaan
             // Kutsutaan alustamamme olion save metodia, joka tallentaa olion tietokantaan
             $item->save();
+            //tallennetaan mys käyttäjän vaatekaappiin
+            Wardrobe::add_item_for_person($item->item_id, $_SESSION['user']);
             // Ohjataan käyttäjä lisäyksen jälkeen vaatteen esittelysivulle
-            Redirect::to('/items/' . $item->item_id, array(
-                                'message' => 'Vaate lisätty!'));
+            Redirect::to('/wardrobe/wardrobe.html', array('message' => 'Vaate lisätty!'));
         }else{
             // Invalidi syöte
             // Luodaan uusi näkymä johon välitetään syötetyt arvot
-            View::make('items/new.html', array( 
+            View::make('wardrobe/new_item.html', array( 
                                 'errors' => $errors,
-                                'attributes' => $attributes));
+                                'attributes' => $attributes
+            ));
         }
+        
     }
 
-    public static function save_item_to_wardrobe(){
-        self::check_logged_in();
-        $params = $_POST;
-        Wardrobe::add_item_for_person($params['item_id'], $_SESSION['user']);
-        Redirect::to('/items/', array('message' => 'Vaate lisätty!'));
-
-
-    }
         
         
 }

@@ -83,12 +83,25 @@
 
   // Näytä oma vaatekaappi
 
+  $routes->get('/wardrobe/', function(){
+    WardrobeController::show_all_by_person_id();
+  });
+
   $routes->get('/wardrobe/:user_id/', function(){
     WardrobeController::show_all_by_person_id();
   });
 
-  // Lisää vaate omaan vaatekaappiin
+  // Lisää uusi vaate omaan vaatekaappiin - näkymä
+  $routes->get('/wardrobe/:user_id/newitem/', function(){
+    WardrobeController::create_new_item_to_wardrobe();
+  });
 
+  // Lisää uusi vaate omaan vaatekaappiin - käsittely
+  $routes->post('/wardrobe/:user_id/newitem/', function(){
+    WardrobeController::save_new_item_to_wardrobe();
+  });
+
+  // Lisää olemassa oleva vaate omaan vaatekaappiin
   $routes->post('/wardrobe/:user_id/add/', function(){
     WardrobeController::save_item_to_wardrobe();
   });
