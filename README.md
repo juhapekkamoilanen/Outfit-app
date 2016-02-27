@@ -37,11 +37,17 @@ Järjestelmän tarkoituksena on helpottaa vaatteiden valitsemista valmiiksi tall
 - [x] 4.3 Kirjautuminen (session luonti)
 - [x] 4.3.1 Session käyttäminen - oma vaatekaappi linkki
 - [x] 4.X Kirjautumisohje
+- [x] outfit model 
+- [x] outfit model - find all by person id
+- [x] outfit controller - show all by person id
+- [ ] views: outfits/:person_id
 
 - [x] /User/new.html
 - [ ] /User/edit.html
 - [x] Item listaus näkymän napilla vaatekaappiin lisäys
 - [x] Wardrobe-näkymässä "lisää vaate"-nappi toimittava niin että lisää samalla henkilön vaatekaappiin
+- [ ] saman vaatteen vaatekaappiin lisäysvirhe
+- [ ] itemin poisto (vaikka viittauksia)
 
 - [ ] viestien ja virheiden näyttäminen basemalliin?
 - [x] Tyhjät virheilmoitukset pois näkyvistä (vihreä loota)

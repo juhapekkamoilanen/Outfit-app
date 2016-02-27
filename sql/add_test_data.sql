@@ -28,4 +28,6 @@ VALUES ('2', '2');
 
 INSERT INTO Wardrobe (fk_wardrobe_person, fk_wardrobe_item)
 VALUES ('3', '3');
+
+INSERT INTO Outfit VALUES(default);
 -- fk_wardrobe_person = 1 AND fk_wardrobe_item = 1 LIMIT 1;

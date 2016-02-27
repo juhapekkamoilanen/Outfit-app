@@ -98,18 +98,22 @@ class Wardrobe extends BaseModel{
   
   	}
 
-  	public static function add_item_for_person($item_id, $person_id){
-  		Kint::dump('wardrobe.add_item_for_person()');
-  		Kint::dump($item_id);
-  		Kint::dump($person_id);
-  		
+  	public static function add_item_for_person($item_id, $person_id){		
         $add_query = DB::connection()
-    			->prepare('	INSERT INTO Wardrobe (fk_wardrobe_person, fk_wardrobe_item)
-    						VALUES (:person_id, :item_id)'
-    			);
-        $add_query->execute(array('person_id' => $person_id, 'item_id' => $item_id));
-        
-            
+    		->prepare('	INSERT INTO Wardrobe (fk_wardrobe_person, fk_wardrobe_item)
+    					VALUES (:person_id, :item_id)'
+    		);
+        $add_query->execute(array('person_id' => $person_id, 'item_id' => $item_id));     
+    }
+
+    public static function remove_item_from_person($item_id, $person_id) {
+    	$removal_query = DB::connection()
+    		->prepare(' 	DELETE FROM Wardrobe
+    					WHERE :i = fk_wardrobe_item
+    					AND :p = fk_wardrobe_person'
+    		);
+    	$removal_query->execute(array('i' => $item_id, 'p' => $person_id));
+
     }
         
         
@@ -140,7 +144,13 @@ class Wardrobe extends BaseModel{
          * 
          * INSERT INTO Wardrobe (fk_wardrobe_person, fk_wardrobe_item)
     		VALUES (1, 8)
+        
+		DELETE FROM Wardrobe
+    					WHERE 1 = fk_wardrobe_item
+    					AND 1 = fk_wardrobe_person;
+
          */
+
         
         
 	

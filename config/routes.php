@@ -114,13 +114,23 @@
     WardrobeController::save_item_to_wardrobe();
   });
 
+  // Poista vaate omasta vaatekaapista
+  $routes->post('/wardrobe/:user_id/remove/', function(){
+    WardrobeController::remove_item_from_wardrobe();
+  });
+
 
   //Outfits
 
   // Outfits - notimplemented
   $routes->get('/outfits', function(){
     OutfitController::index();
-  });  
+  });
+
+  // Näytä henkilön kaikki
+  $routes->get('/outfits/:user_id', function(){
+    OutfitController::show_all_by_person_id();
+  }); 
 
 
 

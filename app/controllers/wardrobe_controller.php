@@ -23,7 +23,15 @@ class WardrobeController extends BaseController{
         self::check_logged_in();
         $params = $_POST;
         Wardrobe::add_item_for_person($params['item_id'], $_SESSION['user']);
-        Redirect::to('/items/', array('message' => 'Vaate lisätty!'));
+        Redirect::to('/items/', array('message' => 'Items added!'));
+    }
+
+    //poista vaate vaatekaapista
+    public static function remove_item_from_wardrobe(){
+        self::check_logged_in();
+        $params = $_POST;
+        Wardrobe::remove_item_from_person($params['item_id'], $_SESSION['user']);
+        Redirect::to('/wardrobe/wardrobe.html', array('message' => 'Item removed!'));
     }
 
     //luo uuden vaatteen luontinäkymä
@@ -32,7 +40,7 @@ class WardrobeController extends BaseController{
         View::make('wardrobe/new_item.html');
     }
 
-    //tallenna uusi item järjestelmään ja vaatekaappiin
+    //tallenna uusi item järjestelmään JA vaatekaappiin
     public static function save_new_item_to_wardrobe(){
         self::check_logged_in();
         $params = $_POST;
@@ -59,7 +67,7 @@ class WardrobeController extends BaseController{
             //tallennetaan mys käyttäjän vaatekaappiin
             Wardrobe::add_item_for_person($item->item_id, $_SESSION['user']);
             // Ohjataan käyttäjä lisäyksen jälkeen vaatteen esittelysivulle
-            Redirect::to('/wardrobe/wardrobe.html', array('message' => 'Vaate lisätty!'));
+            Redirect::to('/wardrobe/wardrobe.html', array('message' => 'Item added to your wardrobe!'));
         }else{
             // Invalidi syöte
             // Luodaan uusi näkymä johon välitetään syötetyt arvot

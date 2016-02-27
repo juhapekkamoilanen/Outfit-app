@@ -15,16 +15,16 @@
   <table class="table table-striped table-bordered">
     <thead>
       <tr>
-        <th>item_id</th>
+        <th>id</th>
         <th>type</th>
         <th>brand</th>
         <th>color</th>
-        <th>color_2nd</th>
+        <th>2nd color</th>
         <th>material</th>
         <th>image</th>        
         {% if user_logged_in %}
-        <th>edit</th>
-        <th>add</th>
+          <th>edit</th>
+          <th>add</th>
         {% endif %}
 
       </tr>
@@ -49,7 +49,7 @@
             <form method="post" action="{{base_path}}/wardrobe/{{user_logged_in.user_id}}/add">
               <div class="form-group">
                 <input type="hidden" name="item_id" value="{{item.item_id}}">
-                <button type="submit" class="btn btn-default btn-sm">Add2</button>
+                <button type="submit" class="btn btn-default btn-sm">Add</button>
               </div>
             </form>
           </td>

@@ -19,7 +19,7 @@ CREATE TABLE Item(
 );
 
 CREATE TABLE Outfit(
-	outfit_id SERIAL PRIMARY KEY,
+	outfit_id SERIAL PRIMARY KEY
 );
 
 --Foreignkey naming:

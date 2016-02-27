@@ -32,14 +32,15 @@ vaatekaapissa ei tarvita joka rivin lopussa painiketta!
     <!-- Otsikkorivi -->
     <thead>
       <tr>
-        <th>item_id</th>
+        <th>Id</th>
         <th>type</th>
-        <th>brand</th>
-        <th>color</th>
-        <th>color_2nd</th>
-        <th>material</th>
-        <th>image</th>
-        <th></th>
+        <th>Brand</th>
+        <th>Color</th>
+        <th>2nd color</th>
+        <th>Material</th>
+        <th>Image</th>
+        <th>Edit</th>
+        <th>Remove</th>
 
       </tr>
     </thead>
@@ -59,7 +60,15 @@ vaatekaapissa ei tarvita joka rivin lopussa painiketta!
           <td>{{item.material}}</td>
           <td>{{item.image}}</td>
           <!-- Editointi painike -->
-          <td><a class="btn btn-default btn-sm" href="{{base_path}}/item/{{item.item_id}}/edit">Muokkaa</a></td>
+          <td><a class="btn btn-default btn-sm" href="{{base_path}}/items/{{item.item_id}}/edit">Edit</a></td>
+          <td>
+            <form method="post" action="{{base_path}}/wardrobe/{{user_logged_in.user_id}}/remove">
+              <div class="form-group">
+                <input type="hidden" name="item_id" value="{{item.item_id}}">
+                <button type="submit" class="btn btn-default btn-sm">Remove</button>
+              </div>
+            </form>
+          </td>
         </tr>
       {% endfor %}
     </tbody>
