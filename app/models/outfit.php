@@ -49,6 +49,50 @@ class Outfit extends BaseModel{
 		return $outfits;
 	}
 
+	public static function find($outfit_id){
+		//tietokantahaku, alustus
+		$items_in_outfit_query = DB::connection()
+			->prepare(' SELECT * FROM Outfititems
+						WHERE fk_outfititems_outfit = :outfit_id'
+		);
+		//tietokantahaku, suoritus
+		$items_in_outfit_query
+			->execute(array('outfit_id' => $outfit_id));
+
+		//tulokset taĺteen
+		$item_ids_in_outfit = Array();
+		$item_ids_in_outfit = $items_in_outfit_query->fetchAll();
+
+		//item olioille taulukko
+		$item_objects_in_wardrobe = Array();
+
+		//items_in_outfit sisältää pelkät outfit_id:t ja item_id:t
+		foreach ($item_ids_in_outfit as $item_in_outfit) {
+	    	//haetaan niitä vastaavat Itemit DB:stä
+	    	$item_query = DB::connection()
+	    		->prepare('	SELECT * FROM Item 
+	    					WHERE item_id = :item_id 
+	    					LIMIT 1'
+	    	);
+	    	
+	    	$item_query->execute(array('item_id' => $item_in_outfit['fk_outfititems_item']));
+	    	$one_item = $item_query->fetch();
+
+	    	//tallennetaan haettu itemi taulukkoon 
+	    	$item_objects_in_wardrobe[] = new Item(array(
+					'item_id' => $one_item['item_id'],
+					'type' => $one_item['type'],
+					'brand' => $one_item['brand'],
+					'color' => $one_item['color'],
+					'color_2nd' => $one_item['color_2nd'],
+					'material' => $one_item['material'],
+					'image' => $one_item['image']
+					));  	
+	    }
+		return $item_objects_in_wardrobe;
+	    
+  	}
+
 
 
 }

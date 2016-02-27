@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>All items</h1>
+
+  {% if user_logged_in %}
+    <h1>{{user_logged_in.username}}'s outfits</h1>
+  {% endif %}
 
   {% if message %}
     <div class="alert alert-success">
