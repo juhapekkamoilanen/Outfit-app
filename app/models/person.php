@@ -59,7 +59,6 @@ class Person extends BaseModel{
 			));
 		}
 
-		Kint::dump($people);
 
 		return $people;
 

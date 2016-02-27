@@ -1,5 +1,8 @@
 # Tietokantasovelluksen esittelysivu
 
+username: Maija
+password: 12345678
+
 Yleisiä linkkejä:
 
 * [Katso käynnistysopas](https://github.com/juhapekkamoilanen/Tsoha-Bootstrap/tree/master/doc/Kaynnistysopas1.pdf)

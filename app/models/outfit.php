@@ -49,4 +49,6 @@ class Outfit extends BaseModel{
 		return $outfits;
 	}
 
+
+
 }

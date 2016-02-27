@@ -18,8 +18,7 @@ class OutfitController extends BaseController{
         $persons_outfits = Outfit::find_all_by_person_id($_SESSION['user']);
         // Renderöidään views/wardrobe kansiossa sijaitseva tiedosto
         // wardrobe.html muuttujan $persons_items datalla
-        Kint::dump($persons_outfits);
-        View::make('notimplemented.html');
+        View::make('outfit/index.html', array('outfits' => $persons_outfits));
         //View::make('outfit/index.html', array('outfits' => $persons_outfits));
 	}
 }
