@@ -40,11 +40,12 @@
 
     public function validate_string_length($desc, $input, $length) {
       $errors = array();
-      if($input == '' || $input == null) {
+      //ei saa olla tyhja, null tai whitespacea alussa tai lopussa
+      if($input == '' || $input == null || $input != trim($input)) {
         $errors[] = "Please insert $desc";
       }
-      if (strlen($input) < $length) {
-        $errors[] = "$desc must be longer than 3 characters";
+      if (strlen($input) <= $length) {
+        $errors[] = "$desc must be longer than $length characters";
       }
       return $errors;
     }

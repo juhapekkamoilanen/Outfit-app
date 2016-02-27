@@ -11,13 +11,13 @@
   
   <h1>{{item.type}}</h1>
   <!-- Painikkeet tähän -->
- 
-  <form method="post" action="{{base_path}}/items/{{item.item_id}}/destroy" style="display: inline-block;">
-    <button type="submit" class="btn btn-danger">Poista</button>
-  </form>
+  {% if user_logged_in %}
+    <form method="post" action="{{base_path}}/items/{{item.item_id}}/destroy" style="display: inline-block;">
+      <button type="submit" class="btn btn-danger">Poista</button>
+    </form>
 
-  <td><a class="btn btn-default btn-sm" href="{{base_path}}/items/{{item.item_id}}/edit">Muokkaa</a></td>
-
+    <td><a class="btn btn-default btn-sm" href="{{base_path}}/items/{{item.item_id}}/edit">Muokkaa</a></td>
+  {% endif %}
 
   <!-- Tiedot tulee listana tähän -->
   <ul>

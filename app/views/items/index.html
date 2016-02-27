@@ -21,9 +21,9 @@
         <th>color</th>
         <th>color_2nd</th>
         <th>material</th>
-        <th>image</th>
-        <th>edit</th>
+        <th>image</th>        
         {% if user_logged_in %}
+        <th>edit</th>
         <th>add</th>
         {% endif %}
 
@@ -41,9 +41,10 @@
           <td>{{item.color_2nd}}</td>
           <td>{{item.material}}</td>
           <td>{{item.image}}</td>
-          <td><a class="btn btn-default btn-sm" href="{{base_path}}/items/{{item.item_id}}/edit">Edit</a></td>
+          
 
           {% if user_logged_in %}
+          <td><a class="btn btn-default btn-sm" href="{{base_path}}/items/{{item.item_id}}/edit">Edit</a></td>
           <td>
             <form method="post" action="{{base_path}}/wardrobe/{{user_logged_in.user_id}}/add">
               <div class="form-group">

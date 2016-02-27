@@ -38,7 +38,7 @@ Järjestelmän tarkoituksena on helpottaa vaatteiden valitsemista valmiiksi tall
 - [x] 4.3.1 Session käyttäminen - oma vaatekaappi linkki
 - [x] 4.X Kirjautumisohje
 
-- [ ] /User/new.html
+- [x] /User/new.html
 - [ ] /User/edit.html
 - [x] Item listaus näkymän napilla vaatekaappiin lisäys
 - [x] Wardrobe-näkymässä "lisää vaate"-nappi toimittava niin että lisää samalla henkilön vaatekaappiin

@@ -136,17 +136,17 @@ class Item extends BaseModel{
   	}
 
   	public function validate_brand() {
-  		//tarkastetaan että ei ole tyhja ja pidempi kuin 2
+  		//tarkastetaan että ei ole tyhja ja pidempi kuin 3
   		//voisi olla myös valikosta valinta
   		$desc = 'brand';
   		$input = $this->brand;
-  		$length = 2;
+  		$length = 3;
   		$errors = parent::validate_string_length($desc, $input, $length);
   		return $errors;
   	}
 
   	public function validate_color() {
-  		//tarkastetaan että ei ole tyhja ja pidempi kuin 2
+  		//tarkastetaan että ei ole tyhja ja pidempi kuin 3
   		//väri voisi olla myös valikosta valinta
   		$desc = 'color';
   		$input = $this->color;
