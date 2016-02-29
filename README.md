@@ -45,7 +45,8 @@ Järjestelmän tarkoituksena on helpottaa vaatteiden valitsemista valmiiksi tall
 - [x] outfit controller - show all by person id
 - [x] views: outfits/:person_id
 - [x] all outfits view
-- [ ] new outfit
+- [x] new outfit
+- [ ] new outfit post käsittely
 - [ ] remove outfit from collection
 
 - [x] /User/new.html

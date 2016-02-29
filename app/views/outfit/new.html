@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+<!--
+Yhden henkilön vaatekaappi näkymä
+
+TODO
+-pelkkä copy-paste-ruoka, muokkaa kaikki!
+
+Pitäisi olla hyvin samankaltainen näkymä kuin item/index.html,
+joka kuvaa "vaatevaraston" näkymää.
+Eroavaisuutena "Lisää vaate" -painike,
+vaatekaapissa ei tarvita joka rivin lopussa painiketta!
+-->
+
+  {% if user_logged_in %}
+    <h1>{{user_logged_in.username}}'s wardrobe</h1>
+  {% endif %}
+
+  {% if message %}
+    <div class="alert alert-success">
+      {{message}}
+    </div>
+  {% endif %}  
+
+  
+
+  <form action="{{base_path}}/outfits/{{user_logged_in.user_id}}/new" method="post">
+  <div class="form-group2">
+    <!--  Taulukko, Rivi = yksi vaate vaatekaapissa-->
+    <table class="table table-striped table-bordered">
+      <!-- Otsikkorivi -->
+      <thead>
+        <tr>
+          <th></th>
+          <th>Id</th>
+          <th>type</th>
+          <th>Brand</th>
+          <th>Color</th>
+          <th>2nd color</th>
+          <th>Material</th>
+          <th>Image</th>
+
+        </tr>
+      </thead>
+
+      <!-- "DATA"-->
+      <tbody>
+        <!-- parametriä (persons_items) luetaan tässä alkio kerrallaan-->
+        
+        {% for item in items %}
+          <tr>
+            <td> 
+              <input type="checkbox" name="{{item.item_id}}" value="{{item.item_id}}"><br>
+            </td>
+            <!-- Linkki vaatteen sivulle -->
+            <td><a href="{{base_path}}/items/{{item.item_id}}">{{item.item_id}}</td>
+            <!-- Muut tiedot vaatteesta -->
+            <td>{{item.type}}</td>
+            <td>{{item.brand}}</td>
+            <td>{{item.color}}</td>
+            <td>{{item.color_2nd}}</td>
+            <td>{{item.material}}</td>
+            <td>{{item.image}}</td>  
+          </tr>
+        {% endfor %}
+
+      </tbody>
+      
+    </table>
+  </div>
+  <button type="submit" class="btn btn-success">Create outfit</button>
+  </form>
+  
+{% endblock %}

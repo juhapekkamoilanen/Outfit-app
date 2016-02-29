@@ -28,4 +28,11 @@ class OutfitController extends BaseController{
         $persons_outfit = Outfit::find_one_personal($outfit_id, $_SESSION['user']);
         View::make('outfit/outfit.html', array('outfit' => $persons_outfit));
 	}
+
+	//Create new - view
+	public static function create() {
+		self::check_logged_in();
+		$persons_items = Wardrobe::find_by_person_id($_SESSION['user']);
+        View::make('outfit/new.html', array('items' => $persons_items));
+	}
 }

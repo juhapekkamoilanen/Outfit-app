@@ -133,6 +133,11 @@
   });
 
   // Outfits - view all outfits in system
+  $routes->get('/outfits/new/', function(){
+    OutfitController::create();
+  });
+
+  // Outfits - view all outfits in system
   $routes->get('/outfits/all/:outfit_id/', function($outfit_id){
     OutfitController::show($outfit_id);
   });
@@ -145,7 +150,14 @@
   // Näytä yksi asu
   $routes->get('/outfits/:user_id/:outfit_id/', function($outfit_id){
     OutfitController::show_by_outfit_id($outfit_id);
-  }); 
+  });
+
+  // Outfits - view all outfits in system
+  $routes->post('/outfits/:user_id/new/', function(){
+    HelloWorldController::sandbox();
+  });
+
+  
 
 
 
