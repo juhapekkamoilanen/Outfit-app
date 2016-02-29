@@ -10,13 +10,17 @@ Yhden asun näkymä
     </div>
   {% endif %}  
 
-  <div class="container">
-      <h2>Outfit</h2>
-      <div class="panel panel-default">
-        <div class="panel-heading">Rating 5/10#</div>
-        <div class="panel-body"><i>kommentti tähän#</i></div>
+  <div class="row">
+      <div class="col-lg-6">
+        <h2>Outfit</h2>
+        <div class="panel panel-default">
+          <div class="panel-heading">Rating {{outfit.rating}}/5</div>
+          <div class="panel-body"><i>{{outfit.comment}}</i></div>
+        </div>
       </div>
   </div>
+
+  <h2>Items</h2>
 
   <!--  Taulukko, Rivi = yksi vaate asussa-->
   <table class="table table-striped table-bordered">
@@ -37,7 +41,7 @@ Yhden asun näkymä
     <!-- "DATA"-->
     <tbody>
       <!-- parametriä (outfit) luetaan tässä alkio kerrallaan-->
-      {% for item in outfit_items %}
+      {% for item in outfit.items %}
         <tr>
           <!-- Linkki vaatteen sivulle -->
           <td><a href="{{base_path}}/items/{{item.item_id}}">{{item.item_id}}</td>

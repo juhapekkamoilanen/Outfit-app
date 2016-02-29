@@ -132,8 +132,8 @@
     OutfitController::show_all_by_person_id();
   });
 
-  // Näytä henkilön kaikki
-  $routes->get('/outfits/outfit/:outfit_id', function($outfit_id){
+  // Näytä yksi asu
+  $routes->get('/outfits/:user_id/:outfit_id', function($outfit_id){
     OutfitController::show_by_outfit_id($outfit_id);
   }); 
 

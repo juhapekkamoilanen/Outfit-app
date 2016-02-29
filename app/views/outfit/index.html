@@ -33,15 +33,15 @@
     <!-- parametrina outfits (in collection) -->
       {% for outfit in outfits %}
         <tr>
-          <td><a href="{{base_path}}/outfits/{{outfit.outfit_id}}">{{outfit.outfit_id}}</td>
+          <td><a href="{{base_path}}/outfits/{{user_logged_in.user_id}}/{{outfit.outfit_id}}">{{outfit.outfit_id}}</td>
           <td>
           {% for item in outfit.items %}
 
-          	<a href="{{base_path}}/items/{{item.fk_outfititems_item}}">{{item.fk_outfititems_item}}# 
+          	<a href="{{base_path}}/items/{{item.item_id}}">{{item.item_id}} 
           {% endfor %}
           </td>
-          <td>{{item.rating}}</td>
-          <td>{{item.comment}}</td>
+          <td>{{outfit.rating}}</td>
+          <td>{{outfit.comment}}</td>
 
           <td><a class="btn btn-default btn-sm" href="{{base_path}}/items/{{item.item_id}}/edit">Edit #</a></td>
           <td>
