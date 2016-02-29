@@ -33,16 +33,36 @@ class Outfit extends BaseModel{
 		//Create outfit object for every id
 		foreach ($all_outfit_ids as $id) {
 			//Get items (objects, array) in outfit
-			$items_in_outfit = Outfit::get_item_objects_in_outfit($id);
+			$items_in_outfit = Outfit::get_item_objects_in_outfit($id[0]);
 			//add new outfit object to array
 			$all_outfits[] = new Outfit(array(
-				'outfit_id' => $outfit_id,
+				'outfit_id' => $id[0],
 				'items' => $items_in_outfit,
-				'rating' => $row['rating'],
-				'comment' => $row['comment']
+				'rating' => null,
+				'comment' => null
 			));
 		}
 		return $all_outfits;
+  	}
+
+  	public static function get_one_public($outfit_id) {
+  		//array for items
+		$items_in_outfit = Outfit::get_item_objects_in_outfit($outfit_id);
+
+		//if empty return null
+		if (!$items_in_outfit) {
+			return null;
+		}
+			
+		//create new outfit object
+		$outfit = new Outfit(array(
+			'outfit_id' => $outfit_id,
+			'items' => $items_in_outfit,
+			'rating' => null,
+			'comment' => null
+		));
+
+		return $outfit;
   	}
 
   	/**

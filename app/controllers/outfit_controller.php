@@ -2,13 +2,16 @@
 
 class OutfitController extends BaseController{
 
-    //Keskeneräisten sivujen näkymä
+    //Show aĺl outfits in system
 	public static function index(){
-        View::make('notimplemented.html');
+        $all_outfits = Outfit::get_all_outfits();
+        View::make('outfit/all_index.html', array('outfits' => $all_outfits));
 	}
 
-    //Yksittäisnäkymä asulle
+    //Show one item - public view
 	public static function show($id){
+		$outfit = Outfit::get_one_public($id);
+		View::make('outfit/outfit.html', array('outfit' => $outfit));
 	}
 
 	//Näytä tietyn henkilön kaikki vaatteet
@@ -16,7 +19,7 @@ class OutfitController extends BaseController{
         self::check_logged_in();
         // Haetaan kaikki asut tietokannasta kirjautuneen käyttäjän id:n perusteella
         $persons_outfits = Outfit::find_all_personal($_SESSION['user']);
-        View::make('outfit/index.html', array('outfits' => $persons_outfits));
+        View::make('outfit/personal_index.html', array('outfits' => $persons_outfits));
 	}
 
 	//Näytä yhden asun yksittäisnäkymä

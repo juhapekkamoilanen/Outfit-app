@@ -122,18 +122,28 @@
 
   //Outfits
 
-  // Outfits - notimplemented
-  $routes->get('/outfits', function(){
+  // Outfits - view all outfits in system
+  $routes->get('/outfits/', function(){
     OutfitController::index();
   });
 
+  // Outfits - view all outfits in system
+  $routes->get('/outfits/all/', function(){
+    OutfitController::index();
+  });
+
+  // Outfits - view all outfits in system
+  $routes->get('/outfits/all/:outfit_id/', function($outfit_id){
+    OutfitController::show($outfit_id);
+  });
+
   // Näytä henkilön kaikki
-  $routes->get('/outfits/:user_id', function(){
+  $routes->get('/outfits/:user_id/', function(){
     OutfitController::show_all_by_person_id();
   });
 
   // Näytä yksi asu
-  $routes->get('/outfits/:user_id/:outfit_id', function($outfit_id){
+  $routes->get('/outfits/:user_id/:outfit_id/', function($outfit_id){
     OutfitController::show_by_outfit_id($outfit_id);
   }); 
 

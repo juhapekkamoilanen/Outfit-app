@@ -10,15 +10,18 @@ Yhden asun näkymä
     </div>
   {% endif %}  
 
+  <h2>Outfit</h2>
+
+  {% if user_logged_in %}
   <div class="row">
       <div class="col-lg-6">
-        <h2>Outfit</h2>
         <div class="panel panel-default">
           <div class="panel-heading">Rating {{outfit.rating}}/5</div>
           <div class="panel-body"><i>{{outfit.comment}}</i></div>
         </div>
       </div>
   </div>
+  {% endif %} 
 
   <h2>Items</h2>
 
