@@ -35,4 +35,31 @@ class OutfitController extends BaseController{
 		$persons_items = Wardrobe::find_by_person_id($_SESSION['user']);
         View::make('outfit/new.html', array('items' => $persons_items));
 	}
+
+	//Store
+    public static function store(){
+    	self::check_logged_in();
+        // POST-pyynnön muuttujat sijaitsevat $_POST nimisessä assosiaatiolistassa
+        $params = $_POST; //array of item_ids (string)
+		Kint::dump($params);
+        View::make('notimplemented.html');
+        $user_id = $_SESSION['user'];
+
+        /*
+        if(!$params) {
+        	//Redirect::to('/outfits/' . $user_id . 'new/', array('message' => 'Please select items!'));
+        }
+
+        $items_in_outfit = Array();
+
+        foreach ($params as $item_id) {
+        	$items_in_outfit[] = Item::find($item_id);
+        }
+
+        //kesken:
+        //luo uusi outfit! lisäksi pitäisi kysyä rating ja comment
+
+        //Redirect::to('/outfits/' . $user_id, array('message' => 'Outfit created!'));
+        */
+    }
 }

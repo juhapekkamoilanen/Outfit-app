@@ -9,23 +9,23 @@
 
   <h1>Item</h1>
   
-  <h1>{{item.type}}</h1>
   <!-- Painikkeet tähän -->
   {% if user_logged_in %}
     <form method="post" action="{{base_path}}/items/{{item.item_id}}/destroy" style="display: inline-block;">
-      <button type="submit" class="btn btn-danger">Delete</button>
+      <button type="submit" class="btn btn-danger">Remove #</button>
     </form>
 
     <td><a class="btn btn-default btn-sm" href="{{base_path}}/items/{{item.item_id}}/edit">Edit</a></td>
   {% endif %}
 
   <!-- Tiedot tulee listana tähän -->
-  <ul>
-    <li><strong>Brand:</strong> {{item.brand}}</li>
-    <li><strong>Color:</strong>{{item.color}}</li>
-    <li><strong>2nd color:</strong> {{item.color_2nd}}</li>
-    <li><strong>Material:</strong> {{item.material}}</li>
-  </ul>
 
-  <img src="{{base_path}}/app/views/items/images/404.jpg" alt="shirt" height="300" width="300">
+  <ul class="list-group">
+    <li class="list-group-item"><h2><strong>Type:</strong> {{item.type}}</h2></li>
+    <li class="list-group-item"><strong>Brand:</strong> {{item.brand}}</li>
+    <li class="list-group-item"><strong>Color:</strong>{{item.color}}</li>
+    <li class="list-group-item"><strong>2nd color:</strong> {{item.color_2nd}}</li>
+    <li class="list-group-item"><strong>Material:</strong> {{item.material}}</li>
+    <li class="list-group-item"><img src="{{base_path}}/app/views/items/images/404.jpg" alt="shirt" height="300" width="300"></li>
+  </ul>
 {% endblock %}

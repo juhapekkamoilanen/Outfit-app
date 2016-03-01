@@ -154,7 +154,8 @@
 
   // Outfits - view all outfits in system
   $routes->post('/outfits/:user_id/new/', function(){
-    HelloWorldController::sandbox();
+    OutfitController::store();
+    //HelloWorldController::sandbox();
   });
 
   
