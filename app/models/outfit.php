@@ -130,6 +130,17 @@ class Outfit extends BaseModel{
 		return $outfits;
   	}
 
+  	/**
+  	* Create new outfit to system and current users collection
+  	* @param array of item objects and rating and comment
+ 	* @return 
+  	*/
+  	private static function save_to_db() {
+  		//see from item.php
+  		
+  		return null;
+  	}
+
   	//PRIVATE METHODS - database access
 
   	/**
