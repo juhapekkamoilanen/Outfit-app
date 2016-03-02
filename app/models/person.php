@@ -128,6 +128,12 @@ class Person extends BaseModel{
             
     }
 
+    public function destroy() {
+  		$query = DB::connection()
+  			->prepare(' DELETE from Person
+  						WHERE user_id = :user_id');
+		$query->execute(array('user_id' => $this->user_id));
+  	}
 
     //Validators
 

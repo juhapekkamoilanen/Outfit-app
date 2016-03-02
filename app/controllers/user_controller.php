@@ -48,6 +48,18 @@ class UserController extends BaseController{
         }
     }
 
+    public static function destroy() {
+    	$params = $_POST;
+
+    	$user_id = $params['user_id'];
+
+    	$user_to_destroy = Person::find($user_id);
+        $user_to_destroy->destroy();
+        Redirect::to('/usermanagement', array('message' => 'User removed'));
+
+    	View::make('notimplemented.html');
+    }
+
 
     //Keskeneräisten sivujen näkymä
 	public static function kesken(){

@@ -111,21 +111,23 @@ class Outfit extends BaseModel{
   		//Variable for outfit-objects
 		$outfits = Array();
 
-		//Iterate though collection
-		foreach ($collection as $row) {
-			//outfit_id of collection row
-			$outfit_id = $row['fk_outfitcollection_outfit'];
-			
-			//array for items
-			$items_in_outfit = Outfit::get_item_objects_in_outfit($outfit_id);
-			
-			//add new outfit object to array
-			$outfits[] = new Outfit(array(
-				'outfit_id' => $outfit_id,
-				'items' => $items_in_outfit,
-				'rating' => $row['rating'],
-				'comment' => $row['comment']
-			));
+		if($collection) {
+			//Iterate though collection
+			foreach ($collection as $row) {
+				//outfit_id of collection row
+				$outfit_id = $row['fk_outfitcollection_outfit'];
+				
+				//array for items
+				$items_in_outfit = Outfit::get_item_objects_in_outfit($outfit_id);
+				
+				//add new outfit object to array
+				$outfits[] = new Outfit(array(
+					'outfit_id' => $outfit_id,
+					'items' => $items_in_outfit,
+					'rating' => $row['rating'],
+					'comment' => $row['comment']
+				));
+			}
 		}
 		return $outfits;
   	}
@@ -146,6 +148,7 @@ class Outfit extends BaseModel{
   	public function save_to_db($person_id) {
   		//db operation 1)
   		$new_outfit_id = $this->create_new_outfit_id();
+  		//$new_outfit_id = self::create_new_outfit_id(); ???
   		
   		//modify this objects id: null -> $new_outfit_id
   		$this->outfit_id = $new_outfit_id;

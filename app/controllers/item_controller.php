@@ -69,18 +69,9 @@ class ItemController extends BaseController{
 
 
     //Poisto
-    public static function destroy($item_id) {
-        Kint::dump('destroymetodissa');
-        Kint::dump($item_id);
-        
+    public static function destroy($item_id) { 
         $item_to_destroy = Item::find($item_id);
-        Kint::dump();
         $item_to_destroy->destroy();
-        //Alustetaan uusi item-olio annetulla id:llä
-        //$item_to_destroy = new Item($item_id);
-        //Kutsutaan luodun olion destroy-metodia, jonka avulla saadaan haluttu item poistettua
-        //$item_to_destroy->destroy();
-        //Ohjataan käyttäjä vaatteiden listaussivulle viestin kanssa
         Redirect::to('/items', array('message' => 'Item successfully deleted'));
     }
 

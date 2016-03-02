@@ -27,33 +27,21 @@ CREATE TABLE Outfit(
 -- fk__foreignkeytable__primarykeytable
 
 CREATE TABLE Outfititems(
-	fk_outfititems_outfit SERIAL REFERENCES Outfit,
-	fk_outfititems_item SERIAL REFERENCES Item,
+	fk_outfititems_outfit SERIAL REFERENCES Outfit ON DELETE CASCADE,
+	fk_outfititems_item SERIAL REFERENCES Item ON DELETE CASCADE,
 	PRIMARY KEY (fk_outfititems_outfit, fk_outfititems_item)
 );
 
 CREATE TABLE Outfitcollection(
-	fk_outfitcollection_person SERIAL REFERENCES Person,
-	fk_outfitcollection_outfit SERIAL REFERENCES Outfit,
+	fk_outfitcollection_person SERIAL REFERENCES Person ON DELETE CASCADE,
+	fk_outfitcollection_outfit SERIAL REFERENCES Outfit ON DELETE CASCADE,
 	rating INTEGER,
 	comment varchar(160),
 	PRIMARY KEY (fk_outfitcollection_person, fk_outfitcollection_outfit)
 );
 
 CREATE TABLE Wardrobe(
-	fk_wardrobe_person SERIAL REFERENCES Person,
-	fk_wardrobe_item SERIAL REFERENCES Item,
+	fk_wardrobe_person SERIAL REFERENCES Person ON DELETE CASCADE,
+	fk_wardrobe_item SERIAL REFERENCES Item ON DELETE CASCADE,
 	PRIMARY KEY (fk_wardrobe_person, fk_wardrobe_item)
-);
-
-CREATE TABLE Wishlist(
-	fk_wishlist_person SERIAL REFERENCES Person,
-	fk_wishlist_item SERIAL REFERENCES Item,
-	PRIMARY KEY (user_id_wishlist, item_id_wishlist)
-);
-
-CREATE TABLE Usehistory(
-	fk_usehistory_outfitcollection REFERENCES Outfitcollection
-	date_used DATE,
-	PRIMARY KEY (fk_usehistory_outfitcollection, date_used)
 );

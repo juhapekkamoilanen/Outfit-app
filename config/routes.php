@@ -28,11 +28,15 @@
 
   // Käyttäjät
 
-  $routes->get('/people/', function() {
+  $routes->get('/usermanagement/', function() {
     UserController::index();
   });
 
   $routes->post('/logout/', function(){
+    UserController::logout();
+  });
+
+  $routes->get('/logout/', function(){
     UserController::logout();
   });
 
@@ -42,6 +46,10 @@
 
   $routes->post('/register/', function(){
     UserController::handle_register();
+  });
+
+  $routes->post('/user/:user_id/delete', function($item_id){
+    UserController::destroy($item_id);
   });
 
   
