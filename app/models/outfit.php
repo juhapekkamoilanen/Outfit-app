@@ -3,7 +3,7 @@
 class Outfit extends BaseModel{
 	//Attributes
 	public $outfit_id; //int
-	public $items; //array
+	public $items; //array (objects)
 	public $rating; //int
 	public $comment; //str
 
@@ -132,16 +132,103 @@ class Outfit extends BaseModel{
 
   	/**
   	* Create new outfit to system and current users collection
-  	* @param array of item objects and rating and comment
+  	* Method makes databaseoperations to 3 tables:
+  	* 1) new outfit_id (outfit table)
+  	* 2) items to outfit (outfititems table)
+  	* 3) outfit to personal collection (outfitcollection)
+  	* @param $person_id - controllers gets it from $_SESSION['user']
  	* @return 
   	*/
-  	private static function save_to_db() {
-  		//see from item.php
+  	public function save_to_db($person_id) {
+  		//db operation 1)
+  		$new_outfit_id = $this->create_new_outfit_id();
   		
-  		return null;
+  		//modify this objects id: null -> $new_outfit_id
+  		$this->outfit_id = $new_outfit_id;
+  		
+  		//dp operation 2)
+  		foreach ($this->items as $item) {
+  			//$item type is (object)
+  			$this->add_item_to_outfit($new_outfit_id, $item->item_id);
+  		}
+
+  		//dp operation 3)
+  		$this->add_to_collection($person_id);
   	}
 
   	//PRIVATE METHODS - database access
+
+  	/**
+  	* Insert a new default outfit_id to database
+  	* outfit-table has only 1 column: outfit_id
+  	* @param
+ 	* @return created id (int)
+  	*/
+  	private function create_new_outfit_id() {
+  		//initialize query
+  		$creation_query = DB::connection()
+  			->prepare('INSERT INTO Outfit
+  				VALUES (DEFAULT)
+  				RETURNING outfit_id'
+  		);
+  		//execute query
+  		$creation_query
+  			->execute();
+  		//collect results
+  		$id = $creation_query->fetch();
+
+  		//$id = array => return only integer
+  		return $id[0];
+  	}
+
+  	/**
+  	* Add item to a existing outfit in db (outfititems table)
+  	* @param outfit_id, item_id
+ 	* @return
+  	*/
+  	private function add_item_to_outfit($outfit_id, $item_id) {
+  		//initialize query
+  		$insertion_query = DB::connection()
+  			->prepare('INSERT INTO Outfititems (fk_outfititems_outfit, fk_outfititems_item)
+  				VALUES (:fk_outfit_id, :fk_item_id)'
+  		);
+		//execute query
+		$insertion_query->execute(array(
+			'fk_outfit_id' => $outfit_id,
+			'fk_item_id' => $item_id
+		));
+		
+  	}
+
+  	/**
+  	* Add item to a users collection
+  	* $this outfit must have outfit_id!
+  	* user 
+  	* @param $owner_id = $person_id of the collection owner 
+ 	* @return
+  	*/
+  	private function add_to_collection($owner_id) {
+  		//check that this object has outfit_id
+  		//and owner_id not null
+  		if ($this->outfit_id && $owner_id) {
+  			//initialize query
+  			$collection_insert_query = DB::connection()
+  				->prepare('INSERT INTO outfitcollection (
+  					fk_outfitcollection_person, fk_outfitcollection_outfit,
+  					rating, comment)
+  					VALUES (:person_id, :outfit_id, :rating, :comment)'
+  			);
+  			//execute query
+  			$collection_insert_query->execute(array(
+  				'person_id' => $owner_id,
+  				'outfit_id' => $this->outfit_id,
+  				'rating' => $this->rating,
+  				'comment' => $this->comment
+  			));
+  		}
+  		
+
+  	}
 
   	/**
   	* Get every outfit in from database - non-personal

@@ -41,10 +41,8 @@ class OutfitController extends BaseController{
     	self::check_logged_in();
         // POST-pyynnön muuttujat sijaitsevat $_POST nimisessä assosiaatiolistassa
         $params = $_POST; //array of item_ids (string)
-		Kint::dump($params);
         //View::make('notimplemented.html');
         $user_id = $_SESSION['user'];
-
         
         if(!$params) {
         	//Redirect::to('/outfits/' . $user_id . 'new/', array('message' => 'Please select items!'));
@@ -61,7 +59,6 @@ class OutfitController extends BaseController{
         		$comment = $value;
         	}
         }
-        Kint::dump($items_in_outfit);
 
         $outfit_object = new Outfit(array(
 			'outfit_id' => null,
@@ -70,17 +67,10 @@ class OutfitController extends BaseController{
 			'comment' => $comment
 		));
 
-        Kint::dump($outfit_object);
+
+        $outfit_object->save_to_db($user_id);
         
-        View::make('notimplemented.html');
-
-
-
-
-        //kesken:
-        //luo uusi outfit! lisäksi pitäisi kysyä rating ja comment
-
-        //Redirect::to('/outfits/' . $user_id, array('message' => 'Outfit created!'));
+        Redirect::to('/outfits/' . $user_id, array('message' => 'Outfit created!'));
         
     }
 }
