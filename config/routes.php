@@ -152,9 +152,15 @@
     OutfitController::show_by_outfit_id($outfit_id);
   });
 
-  // Outfits - view all outfits in system
+  // Outfits - handle submit, new outfit
   $routes->post('/outfits/:user_id/new/', function(){
     OutfitController::store();
+    //HelloWorldController::sandbox();
+  });
+
+  // Outfits - handle submit, remove outfit from collection
+  $routes->post('/outfits/:user_id/', function(){
+    OutfitController::remove_from_collection();
     //HelloWorldController::sandbox();
   });
 

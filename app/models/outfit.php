@@ -130,6 +130,10 @@ class Outfit extends BaseModel{
 		return $outfits;
   	}
 
+  	public static function remove_from_collection($person_id, $item_id) {
+		Outfit::remove_from_collection_db($person_id, $item_id);
+	}
+
   	/**
   	* Create new outfit to system and current users collection
   	* Method makes databaseoperations to 3 tables:
@@ -343,6 +347,20 @@ class Outfit extends BaseModel{
 			return null;
 		}
 	}
+
+	private static function remove_from_collection_db($person_id, $outfit_id) {
+		$remove_query = DB::connection()
+			->prepare(' DELETE FROM outfitcollection
+				WHERE fk_outfitcollection_person = :person_id
+				AND fk_outfitcollection_outfit = :outfit_id'
+		);
+		$remove_query->execute(array(
+			'person_id' => $person_id,
+			'outfit_id' => $outfit_id
+		));
+	}
+
+
 
 
 }

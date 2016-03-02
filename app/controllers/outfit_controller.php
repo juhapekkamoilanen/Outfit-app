@@ -73,4 +73,18 @@ class OutfitController extends BaseController{
         Redirect::to('/outfits/' . $user_id, array('message' => 'Outfit created!'));
         
     }
+
+	public static function remove_from_collection() {
+		$params = $_POST;
+		Kint::dump($params);
+		
+		$item_to_remove = $params['outfit_id'];
+		$user_id = $_SESSION['user'];
+		
+		Outfit::remove_from_collection($user_id, $item_to_remove);
+		
+		Redirect::to('/outfits/' . $user_id, array('message' => 'Outfit removed from collection!'));
+		
+
+   	}
 }
