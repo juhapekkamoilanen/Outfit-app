@@ -110,7 +110,7 @@ class ItemController extends BaseController{
             $item->save();
             // Ohjataan käyttäjä lisäyksen jälkeen vaatteen esittelysivulle
             Redirect::to('/items/' . $item->item_id, array(
-                                'message' => 'Vaate lisätty!'));
+                                'message' => 'Items added!'));
         }else{
             // Invalidi syöte
             // Luodaan uusi näkymä johon välitetään syötetyt arvot

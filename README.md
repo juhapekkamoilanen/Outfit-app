@@ -61,6 +61,14 @@ Järjestelmän tarkoituksena on helpottaa vaatteiden valitsemista valmiiksi tall
 - [x] Tyhjät virheilmoitukset pois näkyvistä (vihreä loota)
 - [x] Testidataa laitettava lisää - asuja ei vielä yhtään tietokannassa!
 - [ ] Dokumentaation kaaviot päivitettävä
+
+Virhetilanteita
 - [ ] Muokkaa-napin (Your wardrobe - näkymässä) ei saa muuttaa muiden lisäämiä samoja vaatteita
+- [ ] Saman nimisen käyttäjän lisääminen
+- [ ] Saman vaatteen lisääminen vaatekaappiin
+
+Käytettävyys
+- [ ] Asun luominen wardrobe-näkymästä
+- [ ] Useiden vaatteiden lisääminen kerralla vaatekaappiin
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Wardrobe database app</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://juhapekm.users.cs.helsinki.fi/vaatekaappi/" property="cc:attributionName" rel="cc:attributionURL">http://juhapekm.users.cs.helsinki.fi/vaatekaappi/</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.

@@ -23,7 +23,7 @@ class WardrobeController extends BaseController{
         self::check_logged_in();
         $params = $_POST;
         Wardrobe::add_item_for_person($params['item_id'], $_SESSION['user']);
-        Redirect::to('/items/', array('message' => 'Items added!'));
+        Redirect::to('/items/', array('message' => 'Item added to your wardrobe!'));
     }
 
     //poista vaate vaatekaapista
