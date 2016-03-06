@@ -11,7 +11,7 @@ class OutfitController extends BaseController{
     //Show one item - public view
 	public static function show($id){
 		$outfit = Outfit::get_one_public($id);
-		View::make('outfit/outfit.html', array('outfit' => $outfit));
+		View::make('outfit/outfit_public.html', array('outfit' => $outfit));
 	}
 
 	//Näytä tietyn henkilön kaikki vaatteet
@@ -76,15 +76,25 @@ class OutfitController extends BaseController{
 
 	public static function remove_from_collection() {
 		$params = $_POST;
-		Kint::dump($params);
 		
-		$item_to_remove = $params['outfit_id'];
+		$outfit_to_remove = $params['outfit_id'];
 		$user_id = $_SESSION['user'];
 		
-		Outfit::remove_from_collection($user_id, $item_to_remove);
+		Outfit::remove_from_collection($user_id, $outfit_to_remove);
 		
 		Redirect::to('/outfits/' . $user_id, array('message' => 'Outfit removed from collection!'));
 		
 
    	}
+
+    public static function destroy() {
+        $params = $_POST;
+        
+        $outfit_to_remove = $params['outfit_id'];
+        $user_id = $_SESSION['user'];
+        
+        Outfit::destroy_outfit($outfit_to_remove);
+        
+        Redirect::to('/outfits/', array('message' => 'Outfit removed from system!'));
+    }
 }

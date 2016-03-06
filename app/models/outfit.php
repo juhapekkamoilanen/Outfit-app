@@ -1,5 +1,12 @@
 <?php
 
+/*
+NOTE:
+database accessing methods are all private and accessed though
+other public methods. This is to keep public methods clean and easy to read.
+Also possible to separate db-access methods to separate static class
+*/
+
 class Outfit extends BaseModel{
 	//Attributes
 	public $outfit_id; //int
@@ -134,6 +141,10 @@ class Outfit extends BaseModel{
 
   	public static function remove_from_collection($person_id, $item_id) {
 		Outfit::remove_from_collection_db($person_id, $item_id);
+	}
+
+	public static function destroy_outfit($outfit_id) {
+		Outfit::destroy_from_db($outfit_id);
 	}
 
   	/**
@@ -359,6 +370,16 @@ class Outfit extends BaseModel{
 		);
 		$remove_query->execute(array(
 			'person_id' => $person_id,
+			'outfit_id' => $outfit_id
+		));
+	}
+
+	private static function destroy_from_db($outfit_id) {
+		$remove_query = DB::connection()
+			->prepare(' DELETE FROM outfit
+				WHERE outfit_id = :outfit_id'
+		);
+		$remove_query->execute(array(
 			'outfit_id' => $outfit_id
 		));
 	}

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+<!--
+Yhden asun näkymä
+-->
+
+  {% if message %}
+    <div class="alert alert-success">
+      {{message}}
+    </div>
+  {% endif %}  
+
+  <h2>Outfit {{outfit.outfit_id}}</h2>
+
+  <!-- Rating and Comments left out in public view
+  {% if user_logged_in %}
+  <div class="row">
+      <div class="col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">Rating {{outfit.rating}}/5</div>
+          <div class="panel-body"><i>{{outfit.comment}}</i></div>
+        </div>
+      </div>
+  </div>
+  {% endif %} 
+  -->
+  <h2>Items</h2>
+
+  <!--  Taulukko, Rivi = yksi vaate asussa-->
+  <table class="table table-striped table-bordered">
+    <!-- Otsikkorivi -->
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>type</th>
+        <th>Brand</th>
+        <th>Color</th>
+        <th>2nd color</th>
+        <th>Material</th>
+        <th>Image</th>
+
+      </tr>
+    </thead>
+
+    <!-- "DATA"-->
+    <tbody>
+      <!-- parametriä (outfit) luetaan tässä alkio kerrallaan-->
+      {% for item in outfit.items %}
+        <tr>
+          <!-- Linkki vaatteen sivulle -->
+          <td><a href="{{base_path}}/items/{{item.item_id}}">{{item.item_id}}</td>
+          <!-- Muut tiedot vaatteesta -->
+          <td>{{item.type}}</td>
+          <td>{{item.brand}}</td>
+          <td>{{item.color}}</td>
+          <td>{{item.color_2nd}}</td>
+          <td>{{item.material}}</td>
+          <td>{{item.image}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+
+{% endblock %}

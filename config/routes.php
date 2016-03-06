@@ -156,7 +156,7 @@
   });
 
   // Näytä yksi asu
-  $routes->get('/outfits/:user_id/:outfit_id/', function($outfit_id){
+  $routes->get('/outfits/:user_id/:outfit_id/', function($user_id, $outfit_id){
     OutfitController::show_by_outfit_id($outfit_id);
   });
 
@@ -167,8 +167,14 @@
   });
 
   // Outfits - handle submit, remove outfit from collection
-  $routes->post('/outfits/:user_id/', function(){
+  $routes->post('/outfits/:user_id/removeitem/', function(){
     OutfitController::remove_from_collection();
+    //HelloWorldController::sandbox();
+  });
+
+  // Outfits - handle submit, remove outfit from system
+  $routes->post('/outfits/destroy/', function(){
+    OutfitController::destroy();
     //HelloWorldController::sandbox();
   });
 
