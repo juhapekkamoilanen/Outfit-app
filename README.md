@@ -3,6 +3,9 @@
 username: Maija
 password: 12345678
 
+username: admin
+password: 1234
+
 Yleisiä linkkejä:
 
 * [Katso käynnistysopas](https://github.com/juhapekkamoilanen/Tsoha-Bootstrap/tree/master/doc/Kaynnistysopas1.pdf)

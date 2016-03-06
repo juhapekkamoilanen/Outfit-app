@@ -174,7 +174,7 @@
 
   // Outfits - handle submit, remove outfit from system
   $routes->post('/outfits/destroy/', function(){
-    OutfitController::destroy();
+    OutfitController::destroy(_);
     //HelloWorldController::sandbox();
   });
 
