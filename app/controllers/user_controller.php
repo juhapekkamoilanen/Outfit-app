@@ -13,6 +13,54 @@ class UserController extends BaseController{
         View::make('User/register.html');
     }
 
+    //Muokkaus - lomakkeen luonti
+    public static function edit($user_id) {
+        //haetaan tietokannasta kysytyn id:n item-olio
+        $user = Person::find($user_id);
+        //luodaan näkymä editointi varten
+        View::make('User/edit.html', array('attributes' => $user));
+    }
+
+    public static function show($id){
+        // Haetaan tietokannasta vaate, jonka id parametrina
+        $user = Person::find($id);
+
+        // Renderöidään views/items kansiossa sijaitseva tiedosto item.html muuttujan $item datalla
+        View::make('User/user.html', array('user' => $user));
+    }
+
+    //Muokkaus - lomakkeen käsittely
+    public static function update($user_id) {
+        $params = $_POST;
+
+        $attributes = array(
+            'user_id' => $user_id,
+            'username' => $params['username'],
+            'password' => $params['password'],
+            'email' => $params['email'],
+            'full_name' => $params['full_name'],
+            'user_info' => $params['user_info'],
+            );
+
+        $edited_user = new Person($attributes);
+        $errors = $edited_user->errors();
+
+        Kint::dump($edited_user);
+
+        //View::make('notimplemented.html');
+
+        if (count($errors) > 0) {
+            //luodaan editointinäkymä uudelleen virheilmoitusten kanssa
+            View::make('user/edit.html', array('errors' => $errors, 'attributes' => $attributes));
+        } else {
+            //kutsutaan luodun olion update-metodia
+            $edited_user->update(); 
+            //Ohjataan käyttäjä luodun vaatteen sivulle viestin kanssa
+            Redirect::to('/usermanagement/', array('message' => 'User successfully edited'));
+
+        }
+    }
+
     public static function handle_register() {
         // POST-pyynnön muuttujat sijaitsevat $_POST nimisessä assosiaatiolistassa
         $params = $_POST;

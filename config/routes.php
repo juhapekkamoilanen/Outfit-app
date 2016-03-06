@@ -52,6 +52,19 @@
     UserController::destroy($item_id);
   });
 
+  $routes->get('/user/:user_id/edit', function($user_id){
+    UserController::edit($user_id);
+  });
+
+  $routes->post('/user/:user_id/edit', function($user_id){
+    UserController::update($user_id);
+  });
+
+  // Vaatteen esittelysivu
+  $routes->get('/user/:item_id', function($user_id){
+    UserController::show($user_id);
+  });
+
   
 
   // Vaatteet

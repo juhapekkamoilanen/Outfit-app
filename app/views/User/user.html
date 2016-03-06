@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+  
+  {% if message %}
+    <div class="alert alert-success">
+      {{message}}
+    </div>
+  {% endif %}
+
+  <h1>User</h1>
+
+  <!-- Tiedot tulee listana tähän -->
+
+  <ul class="list-group">
+    <li class="list-group-item"><h2><strong>Username:</strong> {{user.username}}</h2></li>
+    <li class="list-group-item"><strong>Password:</strong> {{user.password}}</li>
+    <li class="list-group-item"><strong>Email:</strong>{{user.email}}</li>
+    <li class="list-group-item"><strong>Fullname:</strong> {{user.full_name}}</li>
+    <li class="list-group-item"><strong>User info:</strong> {{user.user_info}}</li>
+  </ul>
+{% endblock %}

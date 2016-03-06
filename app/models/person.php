@@ -89,6 +89,28 @@ class Person extends BaseModel{
 	    return null;
   	}
 
+  	public function update() {
+		$query = DB::connection()
+	    	->prepare('	UPDATE 	Person
+	    				SET 	username = :username,
+	    						password = :password,
+	    						email = :email,
+	    						full_name = :full_name,
+	    						user_info = :user_info
+						WHERE 	user_id = :user_id'
+	    );
+
+	    $query->execute(array(	
+	    						'username' => $this->username,
+	    						'password' => $this->password,
+	    						'email' => $this->email,
+	    						'full_name' => $this->full_name,
+	    						'user_info' => $this->user_info,
+	    						'user_id' => $this->user_id
+	    ));
+	    
+  	}
+
   	public static function authenticate($username, $password) {
   		$query = DB::connection()->prepare('SELECT * FROM Person
   											WHERE username = :username
